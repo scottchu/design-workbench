@@ -4,7 +4,7 @@ Updated: 2026-09-06. Status: foundation implementation, independent validation a
 
 ## Baseline and ownership
 
-Started from the user's empty local `CAD-workbench` Git repository. Work is on `setup/foundation`; no remote configured. F0-D authored the foundation contract and documentation; F0-I implemented the workspace and developer tools; F0-V independently validates the candidate; F0-R independently reviews it; root coordinates and maintains these state indexes. No existing design/tool repository was changed.
+Started from the user's empty local `CAD-workbench` Git repository with no remote. Work is on `setup/foundation`. F0-D authored the foundation contract and documentation; F0-I implemented the workspace and developer tools; F0-V independently validates the candidate; F0-R independently reviews it; root coordinates and maintains these state indexes. No existing design/tool repository was changed.
 
 The user's asdf steering deliberately revised the initial contract. The final decision file is covered by `CANDIDATE.sha256`. That manifest covers source, tests, configuration, locks, AGENTS.md and decision 0001. Mutable status/evidence records and general explanatory documentation are outside the runtime-validation fingerprint; the reviewer checks documentation separately.
 
@@ -26,3 +26,7 @@ Final candidate manifest SHA-256: `7b1ca058152b370f5e8226fc7a2642bd0990fe167150a
 This was an existing-host check, not a clean-machine bootstrap test. Concurrent invocation and interactive Viewer behavior were not evaluated. This generic fixture establishes a software foundation only; slicer and physical acceptance remain untested.
 
 No editor UI, real-project integration, slicing, printer operations, Workbench plugin, upstream fork, remote publication or repository migration was delivered. Next action: start the bounded Laifen integration milestone under a new iteration and freshly inspected design baseline.
+
+## Publication follow-up
+
+After foundation delivery, the user explicitly requested a private GitHub repository and a push. Root ran `gh repo create scottchu/CAD-workbench --private --source=. --remote=origin`, verified `isPrivate: true`, and ran `git push -u origin setup/foundation`. `git ls-remote origin refs/heads/setup/foundation` confirmed foundation commit `4dcf9deb7cfddd9ea27889efb82bf7c52a5e3a42` on GitHub. Remote: `git@github.com:scottchu/CAD-workbench.git`. GitHub's initial default branch is `setup/foundation`; no `main` or PR merge was created. This follow-up changes publication/status records only; the validated candidate files and acceptance evidence remain unchanged.

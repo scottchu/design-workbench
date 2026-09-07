@@ -1,7 +1,7 @@
 # Project state
 
 Updated: 2026-09-06. Active iteration: [foundation](docs/iterations/2026-09-06-foundation/BRIEF.md).
-Working branch: `setup/foundation`. Repository began empty; no remote is configured.
+Working branch: `setup/foundation`, tracking `origin/setup/foundation`. Private GitHub repository: [scottchu/CAD-workbench](https://github.com/scottchu/CAD-workbench). The initial foundation commit `4dcf9deb7cfddd9ea27889efb82bf7c52a5e3a42` was pushed and verified after the user explicitly requested publication. GitHub currently uses `setup/foundation` as its default branch; no `main` branch or pull-request merge has been created.
 
 ## Current implementation
 
@@ -13,6 +13,6 @@ Foundation validation and independent review passed. Existing-host setup, enviro
 
 ## Boundaries and next action
 
-Actual designs remain in their existing repositories. No Orca or OpenSCAD editor source was migrated, and no printer/service/remote operation is part of this iteration. Generated smoke files under `.workbench/` are reproducible developer evidence, not print-ready deliverables.
+Actual designs remain in their existing repositories. No Orca or OpenSCAD editor source was migrated, and no printer or service operation is part of this iteration. The later user-authorized publication created the private GitHub remote and pushed the foundation branch. Generated smoke files under `.workbench/` are reproducible developer evidence, not print-ready deliverables.
 
 The next scoped implementation is roadmap milestone 1: open an existing Laifen model, change real parameters, regenerate it, and bind displayed/exported geometry to the same candidate. Inspect its current source and physical observations before choosing the exact integration baseline. See [NEXT_AGENT.md](NEXT_AGENT.md).
