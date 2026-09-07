@@ -2,6 +2,8 @@
 
 This is an intended sequence, not an implementation inventory. Advance by observable completion gates. Keep existing designs outside this software repository; no mandatory migration or engine conversion is required.
 
+User priority update, 2026-09-07: the [workflow ownership iteration](iterations/2026-09-07-workflow-ownership/BRIEF.md) precedes milestone 1. Its gate is a discoverable twelve-category catalog and two mapped recipes with explicit providers, project bindings and separate acceptance, plus independently verified project/history/WIP preservation and removal of embedded shared workflow authority from design-projects. It does not implement a workflow engine or establish end-to-end recipe execution.
+
 ## 0. Reproducible foundation
 
 Provide the pinned root Python environment, root npm workspace, doctor and generic CAD smoke/readback path described in decision 0001.

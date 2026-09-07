@@ -1,7 +1,7 @@
 # Project state
 
-Updated: 2026-09-06. Active iteration: [foundation](docs/iterations/2026-09-06-foundation/BRIEF.md).
-Working branch: `setup/foundation`, tracking `origin/setup/foundation`. Private GitHub repository: [scottchu/CAD-workbench](https://github.com/scottchu/CAD-workbench). The initial foundation commit `4dcf9deb7cfddd9ea27889efb82bf7c52a5e3a42` was pushed and verified after the user explicitly requested publication. GitHub currently uses `setup/foundation` as its default branch; no `main` branch or pull-request merge has been created.
+Updated: 2026-09-07. Active iteration: [workflow ownership](docs/iterations/2026-09-07-workflow-ownership/BRIEF.md), implementation in progress.
+Working branch: `codex/workflow-ownership`, from `e336afc34bd2fa1709dd1760b5990d4bf3cf0fba`. Private GitHub repository: [scottchu/CAD-workbench](https://github.com/scottchu/CAD-workbench). The completed foundation remains on upstream default `setup/foundation`; no `main` branch is assumed.
 
 ## Current implementation
 
@@ -15,4 +15,4 @@ Foundation validation and independent review passed. Existing-host setup, enviro
 
 Actual designs remain in their existing repositories. No Orca or OpenSCAD editor source was migrated, and no printer or service operation is part of this iteration. The later user-authorized publication created the private GitHub remote and pushed the foundation branch. Generated smoke files under `.workbench/` are reproducible developer evidence, not print-ready deliverables.
 
-The next scoped implementation is roadmap milestone 1: open an existing Laifen model, change real parameters, regenerate it, and bind displayed/exported geometry to the same candidate. Inspect its current source and physical observations before choosing the exact integration baseline. See [NEXT_AGENT.md](NEXT_AGENT.md).
+The user has prioritized reusable workflow ownership and project separation before Laifen UI work. Workbench will own the catalog, recipes, contracts, reusable skills/policy/templates and legacy tool source; design and sticker repositories retain project source, assets and evidence with explicit external workflow bindings. The separate workflow-library draft is superseded as an ownership proposal and retained recoverably. Implementation is not yet accepted. Follow the active [handoff](docs/iterations/2026-09-07-workflow-ownership/HANDOFF.md) for the replacement source checkout, preservation gates and pending delivery. Laifen milestone 1 remains planned after this bounded work.

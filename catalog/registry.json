@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "catalog_version": "0.1.0",
+  "policy_manifest": "catalog/POLICY.sha256",
+  "workflows": [
+    {
+      "id": "WF-STICKER-PRODUCTION",
+      "title": "Source-bound sticker production",
+      "recipe": "workflows/sticker-production.md",
+      "binding_contract": "contracts/project-binding.md",
+      "capabilities": [
+        "CAP-INTENT-GATE",
+        "CAP-VISUAL-REVIEW",
+        "CAP-HANDOFF",
+        "CAP-ENV-DELIVERY"
+      ],
+      "version": "policy-manifest",
+      "maturity": "mapped-unexecuted",
+      "completion_gate": "All in-scope project gates bind one candidate; pending downstream acceptance remains explicit."
+    },
+    {
+      "id": "WF-CAD-FABRICATION",
+      "title": "Parametric CAD to fabrication evidence",
+      "recipe": "workflows/cad-fabrication.md",
+      "binding_contract": "contracts/project-binding.md",
+      "capabilities": [
+        "CAP-INTENT-GATE",
+        "CAP-PARAMETRIC-CAD",
+        "CAP-SIMULATION",
+        "CAP-EXPORT",
+        "CAP-VISUAL-REVIEW",
+        "CAP-SLICING",
+        "CAP-PHYSICAL-FEEDBACK",
+        "CAP-DESIGN-REFLECTION",
+        "CAP-HANDOFF",
+        "CAP-MIGRATION",
+        "CAP-ENV-DELIVERY"
+      ],
+      "version": "policy-manifest",
+      "maturity": "mapped-unexecuted",
+      "completion_gate": "All in-scope project gates bind one candidate; pending downstream acceptance remains explicit."
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "CAP-INTENT-GATE",
+      "category": "Intent confirmation",
+      "maturity": "documented-policy",
+      "provider": {
+        "repository": "https://github.com/scottchu/CAD-workbench",
+        "path": "workflows/policies/CAD_WORKFLOW.md",
+        "version": "policy-manifest",
+        "command": "Resolve external project command from its binding; this entry supplies guidance only.",
+        "kind": "guidance"
+      },
+      "evidence": {
+        "quality": "record-inspected",
+        "reference": "workflows/policies/CAD_WORKFLOW.md",
+        "limitation": "Catalog inspection does not execute the capability; project-specific current acceptance remains external."
+      },
+      "completion_gate": "Small explicit fixed/adjustable relationship and recorded user intent decision; does not pass geometry."
+    },
+    {
+      "id": "CAP-IMAGE-RELIEF",
+      "category": "Image to multicolor relief",
+      "maturity": "reported-unknown",
+      "provider": {
+        "repository": null,
+        "path": null,
+        "version": "unknown",
+        "command": null,
+        "kind": "unknown"
+      },
+      "evidence": {
+        "quality": "reported",
+        "reference": null,
+        "limitation": "Catalog inspection does not execute the capability; project-specific current acceptance remains external."
+      },
+      "completion_gate": "Bind actual source, color/material mapping, generator version and inspect real geometry before claiming availability."
+    },
+    {
+      "id": "CAP-PARAMETRIC-CAD",
+      "category": "Parameterized CAD",
+      "maturity": "foundation-verified",
+      "provider": {
+        "repository": "https://github.com/scottchu/CAD-workbench",
+        "path": "scripts/cad_smoke.py",
+        "version": "cadgen[snapshot]==0.5.0; source e336afc34bd2fa1709dd1760b5990d4bf3cf0fba",
+        "command": {
+          "cwd": "CAD-workbench repository root",
+          "argv": [
+            "uv",
+            "run",
+            "python",
+            "scripts/cad_smoke.py"
+          ]
+        },
+        "kind": "executable"
+      },
+      "evidence": {
+        "quality": "record-inspected",
+        "reference": "docs/iterations/2026-09-06-foundation/VALIDATION.md",
+        "limitation": "Catalog inspection does not execute the capability; project-specific current acceptance remains external."
+      },
+      "completion_gate": "Real source regeneration and measured written artifact; foundation only proves its generic plate."
+    },
+    {
+      "id": "CAP-SIMULATION",
+      "category": "Simulation",
+      "maturity": "reported-unknown",
+      "provider": {
+        "repository": null,
+        "path": null,
+        "version": "unknown",
+        "command": null,
+        "kind": "unknown"
+      },
+      "evidence": {
+        "quality": "reported",
+        "reference": null,
+        "limitation": "Catalog inspection does not execute the capability; project-specific current acceptance remains external."
+      },
+      "completion_gate": "Identify project-owned simulator, exact source and tested relationship; current Grenadier/XT60 simulations were not audited."
+    },
+    {
+      "id": "CAP-EXPORT",
+      "category": "Geometry exports",
+      "maturity": "foundation-verified",
+      "provider": {
+        "repository": "https://github.com/scottchu/CAD-workbench",
+        "path": "scripts/cad_smoke.py",
+        "version": "cadgen[snapshot]==0.5.0; source e336afc34bd2fa1709dd1760b5990d4bf3cf0fba",
+        "command": {
+          "cwd": "CAD-workbench repository root",
+          "argv": [
+            "uv",
+            "run",
+            "python",
+            "scripts/cad_smoke.py"
+          ]
+        },
+        "kind": "executable"
+      },
+      "evidence": {
+        "quality": "record-inspected",
+        "reference": "docs/iterations/2026-09-06-foundation/VALIDATION.md",
+        "limitation": "Catalog inspection does not execute the capability; project-specific current acceptance remains external."
+      },
+      "completion_gate": "Read actual written artifact; counts, bounds, volume, transforms and source/hash provenance for declared target."
+    },
+    {
+      "id": "CAP-VISUAL-REVIEW",
+      "category": "Visual review",
+      "maturity": "documented-policy",
+      "provider": {
+        "repository": "https://github.com/scottchu/CAD-workbench",
+        "path": "workflows/policies/CAD_WORKFLOW.md",
+        "version": "policy-manifest",
+        "command": "Resolve external project command from its binding; this entry supplies guidance only.",
+        "kind": "guidance"
+      },
+      "evidence": {
+        "quality": "record-inspected",
+        "reference": "workflows/policies/CAD_WORKFLOW.md",
+        "limitation": "Catalog inspection does not execute the capability; project-specific current acceptance remains external."
+      },
+      "completion_gate": "Bind exact artifact; distinguish endpoint readiness, observed rendered views, geometry and physical acceptance."
+    },
+    {
+      "id": "CAP-SLICING",
+      "category": "Slicing and configuration comparisons",
+      "maturity": "documented-policy",
+      "provider": {
+        "repository": "https://github.com/scottchu/CAD-workbench",
+        "path": "workflows/policies/CAD_WORKFLOW.md",
+        "version": "policy-manifest",
+        "command": "Resolve external project command from its binding; this entry supplies guidance only.",
+        "kind": "guidance"
+      },
+      "evidence": {
+        "quality": "record-inspected",
+        "reference": "workflows/policies/CAD_WORKFLOW.md",
+        "limitation": "Catalog inspection does not execute the capability; project-specific current acceptance remains external."
+      },
+      "completion_gate": "Bind artifact hashes, real slicer/profile versions and resolved settings; inspect toolpaths. No Workbench slicer integration claimed."
+    },
+    {
+      "id": "CAP-PHYSICAL-FEEDBACK",
+      "category": "Physical feedback and repair",
+      "maturity": "documented-policy",
+      "provider": {
+        "repository": "https://github.com/scottchu/CAD-workbench",
+        "path": "workflows/policies/FDM_DESIGN_RULES.md",
+        "version": "policy-manifest",
+        "command": "Resolve external project command from its binding; this entry supplies guidance only.",
+        "kind": "guidance"
+      },
+      "evidence": {
+        "quality": "record-inspected",
+        "reference": "workflows/policies/FDM_DESIGN_RULES.md",
+        "limitation": "Catalog inspection does not execute the capability; project-specific current acceptance remains external."
+      },
+      "completion_gate": "Candidate/process-bound observation and smallest representative coupon or repair regression; CAD alone never passes physical gate."
+    },
+    {
+      "id": "CAP-DESIGN-REFLECTION",
+      "category": "Design reflection",
+      "maturity": "adapted-unexecuted",
+      "provider": {
+        "repository": "https://github.com/scottchu/CAD-workbench",
+        "path": "skills/design-reflection/SKILL.md",
+        "version": "policy-manifest",
+        "command": "Resolve external project command from its binding; this entry supplies guidance only.",
+        "kind": "guidance"
+      },
+      "evidence": {
+        "quality": "record-inspected",
+        "reference": "skills/design-reflection/SKILL.md",
+        "limitation": "Catalog inspection does not execute the capability; project-specific current acceptance remains external."
+      },
+      "completion_gate": "Read-only evidence ledger with separate acceptance layers and one falsifiable next experiment."
+    },
+    {
+      "id": "CAP-HANDOFF",
+      "category": "Iteration delegation and handoff",
+      "maturity": "documented-policy",
+      "provider": {
+        "repository": "https://github.com/scottchu/CAD-workbench",
+        "path": "workflows/policies/PROJECT_CONTINUITY.md",
+        "version": "policy-manifest",
+        "command": "Resolve external project command from its binding; this entry supplies guidance only.",
+        "kind": "guidance"
+      },
+      "evidence": {
+        "quality": "record-inspected",
+        "reference": "workflows/policies/PROJECT_CONTINUITY.md",
+        "limitation": "Catalog inspection does not execute the capability; project-specific current acceptance remains external."
+      },
+      "completion_gate": "Frozen decision-bearing input manifest, distinct bounded owners and exact evidence/next action in project records."
+    },
+    {
+      "id": "CAP-MIGRATION",
+      "category": "Migration and preservation",
+      "maturity": "documented-policy",
+      "provider": {
+        "repository": "https://github.com/scottchu/CAD-workbench",
+        "path": "workflows/policies/ADDING_A_PROJECT.md",
+        "version": "policy-manifest",
+        "command": "Resolve external project command from its binding; this entry supplies guidance only.",
+        "kind": "guidance"
+      },
+      "evidence": {
+        "quality": "record-inspected",
+        "reference": "workflows/policies/ADDING_A_PROJECT.md",
+        "limitation": "Catalog inspection does not execute the capability; project-specific current acceptance remains external."
+      },
+      "completion_gate": "Independent byte/path parity and actual recovery readback before source retirement; unique WIP separate."
+    },
+    {
+      "id": "CAP-ENV-DELIVERY",
+      "category": "Environment tests and PR",
+      "maturity": "foundation-verified",
+      "provider": {
+        "repository": "https://github.com/scottchu/CAD-workbench",
+        "path": "scripts/doctor.py",
+        "version": "e336afc34bd2fa1709dd1760b5990d4bf3cf0fba",
+        "command": {
+          "cwd": "CAD-workbench repository root",
+          "argv": [
+            "uv",
+            "run",
+            "python",
+            "scripts/doctor.py"
+          ]
+        },
+        "kind": "executable"
+      },
+      "evidence": {
+        "quality": "record-inspected",
+        "reference": "docs/iterations/2026-09-06-foundation/VALIDATION.md",
+        "limitation": "Catalog inspection does not execute the capability; project-specific current acceptance remains external."
+      },
+      "completion_gate": "Run repository-local credible checks and independent review on identified candidate before authorized PR; no hosted CI."
+    }
+  ]
+}

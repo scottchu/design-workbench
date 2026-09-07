@@ -2,6 +2,10 @@
 
 CAD Workbench is reusable software for reviewing and adjusting parametric CAD with traceable geometry and evidence. Actual design projects remain in their own repositories.
 
+Workbench also owns the shared [capability catalog](catalog/CAPABILITIES.md), [sticker production](workflows/sticker-production.md) and [CAD fabrication](workflows/cad-fabrication.md) recipes, [project binding contract](contracts/project-binding.md), reusable skills and project-record templates. Project repositories select a specific workflow revision and retain their source, assets, commands and evidence. The catalog distinguishes documented methods from runtime capabilities and does not imply that a recipe has been executed successfully.
+
+Check this catalog locally with `uv run python scripts/check_registry.py`. Its current extraction and acceptance status is recorded in [workflow ownership](docs/iterations/2026-09-07-workflow-ownership/HANDOFF.md). Preserved [legacy Viewer controller source](tools/cad-viewer-service/README.md) retains its original host dependencies; this extraction does not install or operate that service.
+
 The foundation is deliberately small: a reproducible local environment, a diagnostic command and a real CAD generation/export check. There is no editor UI, slicing integration or printer integration in this milestone. See [the roadmap](docs/roadmap.md) for those intended capabilities.
 
 ## Local setup

@@ -1,5 +1,7 @@
 # Resume CAD Workbench
 
+Current priority: complete [workflow ownership and project separation](docs/iterations/2026-09-07-workflow-ownership/BRIEF.md). Read its [handoff](docs/iterations/2026-09-07-workflow-ownership/HANDOFF.md) before using any original source path. The original 0868 worktree disappeared externally; the verified replacement is `/Users/scottchu/Projects/personal/design-projects-workflow-separation` on the same source branch and baseline. Do not start Laifen UI while this migration is in progress. Foundation instructions below describe the prior completed milestone.
+
 1. Read `AGENTS.md`, `README.md`, `PROJECT_STATE.md`, decision `docs/decisions/0001-foundation.md`, and the active foundation iteration's `HANDOFF.md`, `VALIDATION.md` and `REVIEW.md`.
 2. Inspect `git status --short --branch` and `git log -1` before editing. The foundation branch tracks `origin/setup/foundation` in private `scottchu/CAD-workbench`. This is currently GitHub's default branch; no `main` branch or pull-request merge exists. Verify local/remote revisions before later delivery rather than assuming subsequent changes were pushed.
 3. Use asdf-selected tools and the root uv environment. Reproduce the documented doctor/smoke commands when changes or uncertainty warrant it; do not reinstall unrelated global tools or rerun all tests merely to reread documentation.

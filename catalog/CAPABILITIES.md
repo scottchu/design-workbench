@@ -1,0 +1,7 @@
+# Capability catalog
+
+The [registry](registry.json) is the canonical twelve-category mapping with providers, versions, commands, evidence limits and completion gates. The two mapped recipes are [sticker production](../workflows/sticker-production.md) and [CAD fabrication](../workflows/cad-fabrication.md). Neither has been executed as a portable Workbench recipe.
+
+A capability describes an ability; a workflow orders uses and gates; a skill guides an agent; a runtime provider executes; a project instance owns source and acceptance. `reported-unknown` means no current implementation was inspected. `documented-policy` proves only a method exists in source. `adapted-unexecuted` identifies moved guidance with no live forward run. `foundation-verified` links historical generic software evidence, not proof about a current design. Provider `policy-manifest` resolves through [POLICY.sha256](POLICY.sha256), with exact delivery commit assigned separately in the consuming project binding.
+
+The original twelve categories were user-reported. In particular, current Grenadier/XT60 and image-to-relief or simulation runtime maturity are not inferred from that report. Known cadgen generation/export evidence covers the foundation fixture only. External project bindings resolve actual source, commands, profiles and current evidence; this catalog never duplicates live project state. No plugin installation or runtime integration follows from an entry.

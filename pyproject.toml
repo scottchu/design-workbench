@@ -10,3 +10,8 @@ package = false
 
 [tool.uv.workspace]
 members = []
+
+[dependency-groups]
+dev = [
+    "pyyaml>=6.0.3",
+]

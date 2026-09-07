@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workbench workflow receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "workflow_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "PENDING",
+        "BLOCKED"
+      ]
+    },
+    "policy_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "repository_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "git_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "project": {
+          "type": "string",
+          "minLength": 1
+        },
+        "iteration": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "repository_path",
+        "git_revision",
+        "project",
+        "iteration"
+      ]
+    },
+    "fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "cwd": {
+            "type": "string",
+            "minLength": 1
+          },
+          "argv": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "exit_code": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "cwd",
+          "argv",
+          "exit_code"
+        ]
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ]
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "quality": {
+            "enum": [
+              "observed",
+              "validated",
+              "inferred",
+              "reported",
+              "unknown"
+            ]
+          },
+          "layer": {
+            "enum": [
+              "intent",
+              "cad-source",
+              "written-artifact",
+              "slicer",
+              "physical",
+              "machine-audit",
+              "human-review",
+              "user-approval"
+            ]
+          },
+          "claim": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "quality",
+          "layer",
+          "claim",
+          "reference"
+        ]
+      }
+    },
+    "role_identities": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "unresolved_risks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "next_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain_extension": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": false,
+      "properties": {
+        "cad": {
+          "type": "object"
+        },
+        "sticker": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "workflow_id",
+    "capability_ids",
+    "status",
+    "policy_manifest_sha256",
+    "binding",
+    "fingerprint",
+    "commands",
+    "artifacts",
+    "evidence",
+    "role_identities",
+    "findings",
+    "unresolved_risks",
+    "next_action",
+    "domain_extension"
+  ]
+}

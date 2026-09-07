@@ -7,11 +7,15 @@ CAD Workbench connects design intent, generated geometry and review evidence. Th
 | Owner | Responsibility |
 | --- | --- |
 | External design repositories, including design-projects | Authoritative CAD source, design parameters, requirements, design decisions, project checks, release artifacts and physical observations. |
-| CAD Workbench | Reusable application and backend adapters, parameter controls, artifact/provenance presentation, generic software fixtures and integration tests. |
+| CAD Workbench | Reusable application and backend adapters, parameter controls, artifact/provenance presentation, workflow catalog and recipes, shared policies/templates/skills, generic software fixtures and integration tests. |
 | Pinned text-to-CAD/cadgen runtime | Existing supported generation, inspection, export and snapshot capabilities. |
 | Orca preparation and printer-operation domains | Slicer preparation and device workflows, connected through identified artifacts when implemented. Existing Orca architecture documentation does not establish that every planned capability is available. |
 
 No existing repository is migrated by the foundation. Small software fixtures here must be independently understandable and contain no private design, printer or credential data.
+
+The subsequent workflow-ownership iteration explicitly extracts reusable workflow content from design-projects into Workbench. Project repositories retain their source, generators, tests, instantiated records, assets, workshop facts and physical observations. They select external workflow versions through small bindings; historical records continue to identify their original sources. Catalog entries distinguish a bounded capability, a recipe joining capabilities, agent instructions, executable providers, and project instances. A catalog entry does not establish successful execution or project acceptance.
+
+The existing host-specific CAD Viewer controller is preserved as legacy maintenance source during extraction. Its existing installed service and canonical Python dependency are not relocated or operated by this work. Moving its source does not demonstrate a portable runtime. The separate workflow-library draft and empty private remote remain recoverable superseded work, not a second active workflow authority.
 
 ## Foundation implementation boundary
 
