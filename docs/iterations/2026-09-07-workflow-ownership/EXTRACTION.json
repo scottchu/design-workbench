@@ -84,8 +84,8 @@
       "source_path": "docs/templates/project-continuity/ADR.md",
       "source_sha256": "89337119dae7c6040a36262f946112a5bd303122c82a8d3d6ac2150c7cc7e2a1",
       "destination_path": "templates/project-continuity/ADR.md",
-      "destination_sha256": "89337119dae7c6040a36262f946112a5bd303122c82a8d3d6ac2150c7cc7e2a1",
-      "disposition": "byte-identical"
+      "destination_sha256": "a76adc939c36e1d051127235b7eeb5e3c0fbf3414ba3fee004d393f8b267b00c",
+      "disposition": "adapted-whitespace"
     },
     {
       "source_path": "docs/templates/project-continuity/EXPERIENCE.md",

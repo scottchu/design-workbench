@@ -19,9 +19,9 @@ The workflow-library untracked draft supplied category IDs and recipe structure.
 - `scripts/check_registry.py` and `tests/test_registry.py`: catalog/reference/hash checks and four credible failure tests.
 - `docs/decisions/0002-workflow-ownership.md`: ownership and adaptation decision.
 
-`EXTRACTION.json` maps forty old/new paths and SHA-256 values, distinguishing identical and adapted content. Its SHA-256 is `4320a2daf24d784dbab7536bfee1e4d11e1299bf94cbd92d3e160c16f8153e97`.
+`EXTRACTION.json` maps forty old/new paths and SHA-256 values, distinguishing identical and adapted content. Its SHA-256 is `7333d1a41e77be32b679bce3e711f901bb6c60634ea265ec5105a79427bfed52`.
 
-`catalog/POLICY.sha256` SHA-256 is `dc6d7e776edd2bacb6f96baa462f41f1e427eae562fd77b398493f9de9f4c47b`. It pins maintained catalog/contracts/workflows/skills/templates; delivery Git revision is separately assigned by the coordinator. This is a candidate, not a published or installed package.
+`catalog/POLICY.sha256` SHA-256 is `6f1ab6580b67cd9e58dd2302f07cdc65a3a2bfa2213e650139a7ce4542bf9536`. It pins maintained catalog/contracts/workflows/skills/templates; delivery Git revision is separately assigned by the coordinator. This is a candidate, not a published or installed package.
 
 ## Commands and results
 
@@ -35,3 +35,5 @@ The workflow-library untracked draft supplied category IDs and recipe structure.
 ## Acceptance limits and remaining join
 
 Policy/source relocation and discovery checks are implementation evidence only. The independent validator/reviewer must review project bindings, preservation, skill behavior and cross-repository references on the final joined candidate. The reusable source does not establish portable recipe execution, current Grenadier/XT60 capability acceptance, slicing readiness or physical/platform acceptance. Legacy root wording tests should not be retained as a requirement for project compatibility pointers to duplicate policy text; functional catalog/hash checks live with Workbench ownership.
+
+Coordinator follow-up: the complete staged diff exposed three whitespace findings missed by the earlier tracked-only check. Removed two Markdown hard-break spaces and one extra template EOF blank line, refreshed extraction/policy hashes, and checked the complete baseline diff. This changes formatting only. The I1 worker was interrupted before the coordinator correction to maintain one writer.

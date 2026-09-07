@@ -1,6 +1,6 @@
 # Source-bound sticker production
 
-**Workflow:** `WF-STICKER-PRODUCTION`  
+**Workflow:** `WF-STICKER-PRODUCTION`
 **Capabilities:** `CAP-INTENT-GATE`, `CAP-VISUAL-REVIEW`, `CAP-HANDOFF`,
 `CAP-ENV-DELIVERY`
 
