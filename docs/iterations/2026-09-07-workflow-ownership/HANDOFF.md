@@ -1,6 +1,6 @@
 # Workflow ownership handoff
 
-Status: migration implementation and independent preservation/acceptance review complete. Plugin packaging and local simulator passed independent validation/review and root browser/artifact acceptance; PR delivery in progress.
+Status: migration implementation and independent preservation/acceptance review complete. Plugin packaging and local simulator passed independent validation/review and root browser/artifact acceptance; review branches pushed and PRs open.
 
 ## Source checkout relocation
 
@@ -30,4 +30,6 @@ PLUGIN_IMPLEMENTATION.md identifies the generated ignored package and its 44 sou
 
 ## Delivery
 
-Review branches and PR delivery remain pending; no merge authorized. PLUGIN_SIMULATOR_VALIDATION.md and PLUGIN_SIMULATOR_REVIEW.md now pass. R2 stale-entry isolation repair passed eight tests, zero-error Svelte check and production build. ROOT_BROWSER_ACCEPTANCE.md records actual generation, parameter-change, download and measured STL extent checks. The final root-owned dev session is 42116; stop it before regenerating SvelteKit output. New plugin/simulator acceptance is separate from migration acceptance at provider36. Do not silently upgrade consumer bindings or claim all simulators have been registered.
+[Workbench PR 1](https://github.com/scottchu/CAD-workbench/pull/1), [design PR 23](https://github.com/scottchu/design-projects/pull/23), and [sticker PR 1](https://github.com/scottchu/sticker-projects/pull/1) are open. Workbench implementation commit is `91f96fd`. Sticker imported main, both recovery branches and historical tag were pushed to its existing private remote; GitHub accepted the exact 53.90 MiB recovery tar with a size recommendation warning. No merge authorized or performed. Subsequent commits update delivery records only. PLUGIN_SIMULATOR_VALIDATION.md and PLUGIN_SIMULATOR_REVIEW.md now pass. R2 stale-entry isolation repair passed eight tests, zero-error Svelte check and production build. ROOT_BROWSER_ACCEPTANCE.md records actual generation, parameter-change, download and measured STL extent checks. The final root-owned dev session is 42116; stop it before regenerating SvelteKit output. New plugin/simulator acceptance is separate from migration acceptance at provider36. Do not silently upgrade consumer bindings or claim all simulators have been registered.
+
+Root final `uv run python -m unittest discover -s tests -v`: 14 pass; registry check and generated-package readback pass. No smoke CAD rebuild was needed for unchanged geometry code. Documentation-only delivery updates leave all reviewed provider, app, package, source candidate, project and recovery bytes unchanged.

@@ -1,6 +1,6 @@
 # Project state
 
-Updated: 2026-09-07. Active iteration: [workflow ownership](docs/iterations/2026-09-07-workflow-ownership/BRIEF.md), migration, plugin and local simulator accepted locally; review-branch delivery in progress.
+Updated: 2026-09-07. Active iteration: [workflow ownership](docs/iterations/2026-09-07-workflow-ownership/BRIEF.md), migration, plugin and local simulator accepted locally; delivered through open PRs; no merge.
 Working branch: `codex/workflow-ownership`, from `e336afc34bd2fa1709dd1760b5990d4bf3cf0fba`. Private GitHub repository: [scottchu/CAD-workbench](https://github.com/scottchu/CAD-workbench). The completed foundation remains on upstream default `setup/foundation`; no `main` branch is assumed.
 
 ## Current implementation
@@ -18,3 +18,5 @@ Actual designs remain in their existing repositories. No Orca or OpenSCAD editor
 The user has prioritized reusable workflow ownership and project separation before Laifen UI work. Workbench will own the catalog, recipes, contracts, reusable skills/policy/templates and legacy tool source; design and sticker repositories retain project source, assets and evidence with explicit external workflow bindings. The separate workflow-library draft is superseded as an ownership proposal and retained recoverably. Migration V1/V2 preservation checks and R1 review passed for provider `36f4171`, source `b8b0f5d` and sticker `33fcac4`. Source continuity retains one independently confirmed preexisting Laifen missing-VALIDATION failure (10 pass, 1 fail). Follow the active [handoff](docs/iterations/2026-09-07-workflow-ownership/HANDOFF.md) for exact identities, new plugin/simulator acceptance and delivery. Serving the existing Laifen customizer does not complete the separate roadmap milestone 1 measurement/build-identity contract.
 
 Plugin/simulator V3 and R2 passed after isolating unavailable registrations: package tests 5 pass, simulator tests 8 pass, Svelte check zero errors/warnings and production build pass. Root browser generation, changed-height rebuild and two STL downloads/readback passed; see [browser acceptance](docs/iterations/2026-09-07-workflow-ownership/ROOT_BROWSER_ACCEPTANCE.md). Only Laifen is registered currently.
+
+Delivery: [Workbench PR 1](https://github.com/scottchu/CAD-workbench/pull/1), [design PR 23](https://github.com/scottchu/design-projects/pull/23), [sticker PR 1](https://github.com/scottchu/sticker-projects/pull/1). Workbench implementation commit is `91f96fd`; subsequent continuity-only delivery records do not alter the reviewed package or app.
