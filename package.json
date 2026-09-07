@@ -2,7 +2,17 @@
   "name": "cad-workbench",
   "version": "0.1.0",
   "private": true,
-  "description": "Root workspace reserved for future CAD Workbench applications",
-  "workspaces": [],
-  "engines": { "node": ">=20" }
+  "description": "Reusable CAD workflows and local simulator host",
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev:simulator": "npm run dev --workspace @cad-workbench/simulator",
+    "check:simulator": "npm run check --workspace @cad-workbench/simulator",
+    "build:simulator": "npm run build --workspace @cad-workbench/simulator",
+    "test:simulator": "npm run test --workspace @cad-workbench/simulator"
+  }
 }

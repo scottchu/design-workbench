@@ -2,14 +2,14 @@
 
 ## Product boundary
 
-CAD Workbench connects design intent, generated geometry and review evidence. The long-term application may include preparation and printer observation, with CAD, preparation and printer operations remaining separate domains. Sharing a repository does not require sharing a process or granting CAD tools printer authority.
+CAD Workbench owns the workflow plugin and a dedicated local SvelteKit simulator host. It connects project-owned intent, geometry and evidence through explicit provider bindings. The separate printer/slicer project retains its MCP, API, dashboard and widgets; Workbench coordinates those capabilities through skills without absorbing their services. This user decision supersedes the earlier broad application-backend proposal.
 
 | Owner | Responsibility |
 | --- | --- |
 | External design repositories, including design-projects | Authoritative CAD source, design parameters, requirements, design decisions, project checks, release artifacts and physical observations. |
-| CAD Workbench | Reusable application and backend adapters, parameter controls, artifact/provenance presentation, workflow catalog and recipes, shared policies/templates/skills, generic software fixtures and integration tests. |
+| CAD Workbench | Workflow plugin, catalog/recipes, shared policies/templates/skills, local simulator host, generic software fixtures and integration checks. |
 | Pinned text-to-CAD/cadgen runtime | Existing supported generation, inspection, export and snapshot capabilities. |
-| Orca preparation and printer-operation domains | Slicer preparation and device workflows, connected through identified artifacts when implemented. Existing Orca architecture documentation does not establish that every planned capability is available. |
+| Separate Orca preparation and printer-operation project | Slicer/printer runtime, API, MCP, dashboard and widgets. Connected through identified artifacts and actually available interfaces. Existing architecture documentation does not establish that every planned capability is available. |
 
 No existing repository is migrated by the foundation. Small software fixtures here must be independently understandable and contain no private design, printer or credential data.
 
@@ -21,11 +21,13 @@ The existing host-specific CAD Viewer controller is preserved as legacy maintena
 
 asdf pins Node.js, Bun and uv in `.tool-versions`. uv manages CPython 3.12.13 from `.python-version` and the sole root environment that hosts the pinned cadgen runtime. This scoped Python choice preserves the already selected installation without adding another base interpreter. Bun is available; npm remains the JavaScript workspace package manager. A diagnostic script verifies the required environment. A separate smoke script builds one source fixture and measures the written STEP. Ignored artifacts carry a receipt describing their source, command, runtime and checks.
 
-The root npm workspace prepares dependency ownership for a later TypeScript application. It does not justify creating empty UI packages. There is no application server, generalized job manager or persistent viewer service in the foundation.
+The root npm workspace now owns `apps/simulator`, a dedicated SvelteKit host. It adds no generalized job manager or persistent viewer service. The original foundation remains a small CLI/runtime layer.
 
 The Python runtime installation and agent skill/plugin installation are separate concerns. A future skill should explain when and how to use a small supported command; it should not be the only place where reproducibility, argument validation or artifact identity are enforced.
 
-## Planned integration model
+## Local simulator and future build integration
+
+The implemented local simulator host discovers only explicitly registered project asset roots. It serves real existing simulators and identifies their source/artifacts, keeping project code and models outside Workbench. Browser-appropriate simulation remains in the browser; a reusable host is not another geometry implementation. Loopback development needs no Tailscale. Remote or phone access is not implied by localhost availability. No printer or slicer API is added to this host.
 
 External source and explicit parameter values produce an identified build through a backend adapter. The application displays the geometry produced by that build and associates exports and evidence with it. A build identity should include source/dependency identity, backend version, parameters and units. File hashes identify the actual written artifacts. This is an intended contract to prove through the first interactive case, not a claim that a generalized build system exists now.
 

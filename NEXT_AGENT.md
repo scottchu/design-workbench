@@ -1,11 +1,13 @@
 # Resume CAD Workbench
 
-Current priority: complete [workflow ownership and project separation](docs/iterations/2026-09-07-workflow-ownership/BRIEF.md). Read its [handoff](docs/iterations/2026-09-07-workflow-ownership/HANDOFF.md) before using any original source path. The original 0868 worktree disappeared externally; the verified replacement is `/Users/scottchu/Projects/personal/design-projects-workflow-separation` on the same source branch and baseline. Do not start Laifen UI while this migration is in progress. Foundation instructions below describe the prior completed milestone.
+Read `AGENTS.md`, `README.md`, `PROJECT_STATE.md`, decisions 0001/0002 and the active [workflow ownership handoff](docs/iterations/2026-09-07-workflow-ownership/HANDOFF.md) before editing. Inspect current Git status and remote refs; do not infer delivery from this plan.
 
-1. Read `AGENTS.md`, `README.md`, `PROJECT_STATE.md`, decision `docs/decisions/0001-foundation.md`, and the active foundation iteration's `HANDOFF.md`, `VALIDATION.md` and `REVIEW.md`.
-2. Inspect `git status --short --branch` and `git log -1` before editing. The foundation branch tracks `origin/setup/foundation` in private `scottchu/CAD-workbench`. This is currently GitHub's default branch; no `main` branch or pull-request merge exists. Verify local/remote revisions before later delivery rather than assuming subsequent changes were pushed.
-3. Use asdf-selected tools and the root uv environment. Reproduce the documented doctor/smoke commands when changes or uncertainty warrant it; do not reinstall unrelated global tools or rerun all tests merely to reread documentation.
-4. Keep design source and physical observations in their project repositories. Only generic fixtures belong in this software repository.
-5. Complete any unresolved foundation review finding before UI work. Otherwise open a new bounded iteration for the first real Laifen parameter-edit/regenerate/display/export path described in `docs/roadmap.md`. Inspect the current Laifen source before selecting it; historical worktree locations are discovery hints, not an active baseline.
+The accepted boundary is a workflow plugin plus one local SvelteKit simulator host. External design repositories own source, models and simulation logic. Orca owns printer/slicer MCP, API, dashboard and widgets. Provider installs, services and Tailscale routes remain separate.
 
-Do not infer working editor, preparation, printer-control or agent-plugin capabilities from the roadmap. All are future work. Adding a remote, migration, deployment and printer operation each needs an appropriate task scope.
+The migration review pins Workbench `36f4171`, source `b8b0f5d` and sticker `33fcac4`. Consumer bindings intentionally retain that provider revision when newer plugin packaging is added. Read migration VALIDATION/REVIEW and plugin/simulator receipts separately.
+
+The active source checkout is `/Users/scottchu/Projects/personal/design-projects-workflow-separation`. The old 0868 path disappeared externally; canonical dirty design WIP and original sticker live-pilot worktree remain untouched. The superseded workflow-library draft remains recoverable.
+
+Use root uv/npm tooling. `npm run dev:simulator` binds 127.0.0.1:4179; the app README documents explicit external registration. Generated packages, local registry and build outputs are ignored. Stop the dev process before check/build commands that regenerate the same SvelteKit output, then restart it for browser acceptance.
+
+No merge, plugin installation, deployment, printer operation or Tailscale change is implied by PR delivery. The generic CAD foundation is previously validated; rerun its expensive checks only when relevant changes justify it. Roadmap milestones describe remaining contracts, not shipped capabilities.

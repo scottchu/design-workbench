@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "allowedRoots": ["/absolute/project/ignored-build-directory"],
+  "simulators": [{
+    "id": "project-simulator",
+    "title": "Project simulator",
+    "description": "State the actual relationship or CAD build this project implements.",
+    "assetRoot": "/absolute/project/ignored-build-directory",
+    "entrypoint": "index.html",
+    "assets": {"index.html": "REPLACE_WITH_SHA256"},
+    "source": {"root": "/absolute/project", "entrypoint": "src/model.scad", "revision": "REPLACE_WITH_GIT_SHA", "sha256": "REPLACE_WITH_SOURCE_SHA256"}
+  }]
+}

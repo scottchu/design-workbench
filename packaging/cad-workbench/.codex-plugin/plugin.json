@@ -1,0 +1,19 @@
+{
+  "name": "cad-workbench",
+  "version": "0.2.0",
+  "description": "Bound project workflows with separate CAD, slicer and printer providers.",
+  "author": {
+    "name": "Scott Chu"
+  },
+  "repository": "https://github.com/scottchu/CAD-workbench",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "CAD Workbench",
+    "shortDescription": "Traceable project workflows across separate providers.",
+    "category": "Productivity",
+    "longDescription": "Reusable project workflows with traceable evidence and separately installed CAD, slicer and printer providers.",
+    "developerName": "Scott Chu",
+    "defaultPrompt": "Use Workbench to identify this project\u2019s current gate and available providers.",
+    "capabilities": []
+  }
+}
