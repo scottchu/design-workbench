@@ -3,8 +3,8 @@
 One SvelteKit application lists explicitly registered external simulators and opens
 an existing built app in a full-height frame. It serves the original bytes; no
 project geometry, parameter logic, sources or design assets are copied here.
-Printer/slicer MCP/API/dashboard/widgets remain in Orca. No tunnel or remote
-proxy is configured. Only trusted local simulator code should be registered:
+Printer/slicer MCP/API/dashboard/widgets remain in Orca. Optional private
+Tailscale Serve access forwards one explicitly selected HTTPS port to this host. Only trusted local simulator code should be registered:
 the same-origin frame is compatibility isolation, not a hostile-code sandbox.
 
 From Workbench root:
@@ -18,9 +18,10 @@ npm run dev:simulator
 ```
 
 Open http://127.0.0.1:4179/. The default dev/start commands bind only loopback;
-strictPort avoids silently selecting another port. No background service is
-installed. Stop this specific terminal process to stop the host. For a built local
-host use `npm run start --workspace @cad-workbench/simulator` from Workbench root.
+strictPort avoids silently selecting another port. Development uses the foreground
+Vite process. For normal plugin use, build once and use the managed production
+server described in [SERVICE.md](SERVICE.md). The launcher supports lazy ensure/open
+and an explicitly installed macOS user LaunchAgent for login persistence.
 
 ## Register an existing project
 
@@ -71,3 +72,16 @@ This does not execute source on the server or infer physical acceptance.
 The workflow-ownership iteration's SIMULATOR_IMPLEMENTATION.md records the exact
 Laifen OpenSCAD WASM source/build registration and validation limits. Its current
 local registration is ignored machine-specific state, not a bundled private fixture.
+
+## Optional private access
+
+The server always listens on loopback. `WORKBENCH_ALLOWED_ORIGIN` can allow one
+exact HTTPS `*.ts.net` origin, including its selected port. Requests must carry the
+matching Host and, when present, browser Origin. Other hosts, origins and forwarded
+host spoofing fail closed. The setting grants no public access by itself. Configure
+Tailscale Serve separately; do not use Funnel for a private endpoint. Inspect
+existing Serve settings and preserve unrelated routes. All users permitted by the
+tailnet access policy can reach this endpoint; no additional app login is added.
+
+The identified `/health` endpoint supports launcher readiness and reuse. It proves
+server identity, not that every registered external simulator is available.

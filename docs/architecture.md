@@ -50,3 +50,15 @@ Preserve early human validation of ambiguous geometry through a small section, d
 - Physical evidence concerns observations of a particular manufactured/assembled revision.
 
 Success in one category does not confer acceptance in another. The foundation verifies a generic STEP only; future domain integrations and physical acceptance remain outside its claims.
+
+## Managed simulator runtime
+
+The simulator requires a local Node runtime and the actual adapter-node build.
+The plugin packages its intentional source and dependency locks; it does not
+implicitly install dependencies or register a login service. The lifecycle helper
+identifies one owned macOS user LaunchAgent and refuses another checkout or an
+unknown listener on the fixed loopback port. On-demand ensure/open and explicit
+login persistence are separate supported modes. Optional Tailscale Serve gives
+private HTTPS access through one configured origin; no public Funnel endpoint or
+printer/slicer service is introduced. See the 2026-09-07-simulator-service iteration
+for live setup evidence.

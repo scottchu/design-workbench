@@ -13,13 +13,33 @@ class PackageTests(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
         self.base=Path(self.tmp.name).resolve();self.source=self.base/'source';self.source.mkdir()
-        files=set(m.source_map(ROOT).values()) | {m.SCOPE,'scripts/package_plugin.py'}
+        files=set(m.source_map(ROOT).values()) | {m.SCOPE,m.SERVICE_SCOPE,'scripts/package_plugin.py'}
         for name in files:
             dst=self.source/name;dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,dst)
         self.out=self.base/'output/cad-workbench'
     def build(self):return m.build(self.source,self.out,'0'*40)
     def test_relocated_readback(self):
         self.build();new=self.base/'relocated/cad-workbench';new.parent.mkdir();shutil.move(self.out,new);m.validate_package(new)
+    def test_simulator_source_transfer_excludes_generated_and_private_state(self):
+        contaminants = ('apps/simulator/build/index.js', 'apps/simulator/.svelte-kit/generated.js',
+                        'apps/simulator/node_modules/private.js', '.workbench/simulators.json',
+                        'apps/simulator/src/.env', 'apps/simulator/src/private.png')
+        for name in contaminants:
+            path=self.source/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text('private sentinel')
+        self.build()
+        for name in contaminants:self.assertFalse((self.out/name).exists(),name)
+        for name in ('apps/simulator/src/app.html','apps/simulator/src/routes/+page.svelte',
+                     'apps/simulator/scripts/register.mjs','apps/simulator/SERVICE.md',
+                     'scripts/simulator_service.py','package.json','package-lock.json'):
+            self.assertEqual((self.source/name).read_bytes(),(self.out/name).read_bytes(),name)
+    def test_missing_simulator_service_blocks_package_before_output(self):
+        (self.source/'scripts/simulator_service.py').unlink()
+        with self.assertRaisesRegex(ValueError,'missing'):self.build()
+        self.assertFalse(self.out.exists())
+    def test_simulator_source_symlink_refused(self):
+        (self.source/'apps/simulator/src/escaped.js').symlink_to(self.source/'package.json')
+        with self.assertRaisesRegex(ValueError,'symlink'):self.build()
+        self.assertFalse(self.out.exists())
     def test_tampered_output(self):
         self.build();(self.out/'skills/workbench-flow/SKILL.md').write_text('changed')
         with self.assertRaisesRegex(ValueError,'hash mismatch'):m.validate_package(self.out)

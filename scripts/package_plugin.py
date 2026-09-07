@@ -1,4 +1,4 @@
-"""Build a contained, source-bound Workbench skill package without installing it."""
+"""Build a contained Workbench workflow and local simulator package without installing it."""
 from __future__ import annotations
 import argparse
 import hashlib
@@ -11,8 +11,14 @@ ROOT = Path(__file__).resolve().parents[1]
 DIRECTORIES = ('skills', 'catalog', 'contracts', 'workflows', 'templates')
 SUPPORT = ('scripts/check_registry.py', 'scripts/doctor.py', 'scripts/cad_smoke.py',
            'fixtures/smoke/plate.py', '.tool-versions', '.python-version',
-           'pyproject.toml', 'uv.lock', 'docs/iterations/2026-09-06-foundation/VALIDATION.md')
+           'pyproject.toml', 'uv.lock', 'package.json', 'package-lock.json',
+           'scripts/simulator_service.py', 'apps/simulator/SERVICE.md',
+           'docs/iterations/2026-09-06-foundation/VALIDATION.md')
+SIMULATOR_SUPPORT = ('package.json', 'svelte.config.js', 'vite.config.js', 'jsconfig.json',
+                     'config.example.json', 'README.md', '.gitignore', 'scripts/register.mjs')
+SIMULATOR_SOURCE_SUFFIXES = {'.js', '.mjs', '.ts', '.svelte', '.html', '.css'}
 SCOPE = 'docs/iterations/2026-09-07-workflow-ownership/PLUGIN_ADDENDUM.md'
+SERVICE_SCOPE = 'docs/iterations/2026-09-07-simulator-service/BRIEF.md'
 
 def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -43,6 +49,21 @@ def source_map(root: Path) -> dict[str, str]:
             if path.is_file():
                 name = str(path.relative_to(root))
                 mapping[name] = name
+    # Only intentional source/config paths: never walk the app root, build cache,
+    # node_modules, runtime registry, service state or external project assets.
+    app = root / 'apps/simulator'
+    for name in SIMULATOR_SUPPORT:
+        relative = f'apps/simulator/{name}'
+        mapping[relative] = relative
+    source = app / 'src'
+    if source.is_symlink():
+        raise ValueError('symlink simulator source directory')
+    for path in sorted(source.rglob('*')):
+        if path.is_symlink():
+            raise ValueError(f'symlink simulator source: {path.relative_to(root)}')
+        if path.is_file() and path.suffix in SIMULATOR_SOURCE_SUFFIXES and not any(part.startswith('.') for part in path.relative_to(source).parts):
+            name = str(path.relative_to(root))
+            mapping[name] = name
     mapping.update({path: path for path in SUPPORT})
     for path in mapping.values():
         safe_file(root, path)
@@ -61,6 +82,12 @@ def validate_package(output: Path) -> None:
     for target, row in receipt['files'].items():
         if digest(safe_file(output,target)) != row['sha256']:
             raise ValueError(f'package hash mismatch: {target}')
+    for name in SUPPORT:
+        safe_file(output, name)
+    for name in SIMULATOR_SUPPORT:
+        safe_file(output, f'apps/simulator/{name}')
+    safe_file(output, 'apps/simulator/src/app.html')
+    safe_file(output, 'apps/simulator/src/routes/+page.svelte')
     inputs = safe_file(output,'PACKAGE_INPUTS.sha256')
     if digest(inputs) != receipt['input_manifest_sha256']:
         raise ValueError('input manifest hash mismatch')
@@ -94,11 +121,13 @@ def build(root: Path, output: Path, revision: str | None = None) -> Path:
     if output.name != 'cad-workbench': raise ValueError('output folder must be cad-workbench')
     mapping = source_map(root)
     scope = safe_file(root,SCOPE)
+    service_scope = safe_file(root,SERVICE_SCOPE)
     if revision is None:
         revision = subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD'],text=True).strip()
     if not re.fullmatch('[0-9a-f]{40}',revision): raise ValueError('invalid source revision')
     inputs = {source:digest(safe_file(root,source)) for source in mapping.values()}
     inputs[SCOPE] = digest(scope)
+    inputs[SERVICE_SCOPE] = digest(service_scope)
     inputs['scripts/package_plugin.py'] = digest(safe_file(root,'scripts/package_plugin.py'))
     manifest_text=''.join(f'{sha}  {name}\n' for name,sha in sorted(inputs.items()))
     output.mkdir(parents=True)
@@ -109,7 +138,7 @@ def build(root: Path, output: Path, revision: str | None = None) -> Path:
         dst=output/target;dst.parent.mkdir(parents=True,exist_ok=True);dst.write_bytes(data)
         rows[target]={'source':source,'sha256':inputs[source]}
     (output/'PACKAGE_INPUTS.sha256').write_text(manifest_text)
-    receipt={'format_version':1,'source_revision':revision,'source_identity':'Git revision plus input manifest; includes uncommitted declared inputs when present','base_policy_revision':'36f41715ee2257c0f2e41e40329216e3d2b2747f','input_manifest_sha256':digest(output/'PACKAGE_INPUTS.sha256'),'files':rows,'runtime_status':'not installed; no providers executed'}
+    receipt={'format_version':1,'source_revision':revision,'source_identity':'Git revision plus input manifest; includes uncommitted declared inputs when present','base_policy_revision':'36f41715ee2257c0f2e41e40329216e3d2b2747f','scope_sources':[SCOPE,SERVICE_SCOPE],'input_manifest_sha256':digest(output/'PACKAGE_INPUTS.sha256'),'files':rows,'components':{'simulator':{'setup_required':True,'source_files':[name for name in sorted(rows) if name.startswith('apps/simulator/') or name in ('package.json','package-lock.json','scripts/simulator_service.py')],'private_runtime_state_included':False}},'runtime_status':'not installed; local simulator source included but not built or started; no providers executed'}
     (output/'PACKAGE_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
     # Recheck all decision-bearing inputs after copying, including scope and builder.
     for source,sha in inputs.items():

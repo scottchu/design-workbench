@@ -1,7 +1,10 @@
+import { env } from '$env/dynamic/private';
+import { allowedRequest } from '$lib/server/access.js';
+
 export async function handle({ event, resolve }) {
-  if (!['127.0.0.1','localhost','[::1]'].includes(event.url.hostname)) return new Response('Loopback only', { status:403 });
-  const origin = event.request.headers.get('origin');
-  if (origin && origin !== event.url.origin) return new Response('Cross-origin request refused', { status:403 });
+  if (!allowedRequest(event.request.headers, env.WORKBENCH_ALLOWED_ORIGIN)) {
+    return new Response('Unconfigured host or cross-origin request', { status:403 });
+  }
   const response = await resolve(event);
   response.headers.set('Cross-Origin-Opener-Policy','same-origin');
   response.headers.set('Cross-Origin-Embedder-Policy','require-corp');
