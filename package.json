@@ -1,0 +1,8 @@
+{
+  "name": "cad-workbench",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Root workspace reserved for future CAD Workbench applications",
+  "workspaces": [],
+  "engines": { "node": ">=20" }
+}
