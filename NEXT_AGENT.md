@@ -8,7 +8,7 @@ specific discrepancy. Read AGENTS.md, README.md, PROJECT_STATE.md and
 ## Workspace and delivered state
 
 Fresh development worktree: `/Users/scottchu/Projects/personal/CAD-workbench-next`,
-branch `codex/next-agent-handoff`, based on `origin/main`. Root uv/npm dependencies
+branch `codex/composable-skills`, based on main `d92816a` for the current local pilot. Root uv/npm dependencies
 are initialized; use only this root's `.venv` for development. Workbench main is
 now the default branch. Workbench PR1, design-projects PR23 and sticker-projects PR1
 are merged. Both consumers pin the reconciled Workbench revision `1d7f4fc` and its
@@ -39,11 +39,18 @@ Earlier handoff instructions to preserve 7e46 as the live runtime are superseded
 
 ## Next bounded action
 
-Use `cad-workbench:workbench-flow` in the new conversation to resolve the existing
-runtime binding and open the registered Laifen simulator. Verify skill invocation
-and reuse of the existing server; record only that result. Preserve the confirmed
-phone-access evidence. After that, select the next task from docs/roadmap.md and
-current project records; do not infer authority to slice or start a print.
+The user now requested incremental workflow/skill separation. Read
+[decision 0003](docs/decisions/0003-composable-skills.md) and the
+[active handoff](docs/iterations/2026-09-08-composable-skills/HANDOFF.md).
+Steps 1 and 2 record the architecture decision and extract simulator-server and
+simulator-page in local source. The five-skill candidate is verified but is not the
+installed three-skill plugin. Read active VALIDATION.md and REVIEW.md before
+continuing. Next is PR delivery after authorization for remote push, followed by
+separately scoped installed/live acceptance; do not reinstall or operate the server
+as incidental delivery. Sticker splitting remains deferred. Communicate in Chinese.
+The previous fresh-session invocation/server-reuse check remains pending, separate
+from source-package acceptance and measured-build acceptance. Preserve confirmed
+phone-access evidence and the canonical main runtime binding.
 
 Known limits: full portable design-to-print execution, detailed mobile exports and
 reboot behavior remain unverified. Design-projects has one preexisting missing

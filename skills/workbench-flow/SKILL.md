@@ -21,4 +21,10 @@ Keep the route as narrow as the user's request:
 
 Record the [handoff receipt](../../contracts/provenance-and-handoff.md) in the project. Keep source/CAD, written artifact/slicer, physical acceptance, machine audit, human review and user intent decisions separate. State actual commands/results and pending gates; passing package checks or a skill read does not establish recipe execution.
 
-For a simulation or interactive design-review request, the bundled Workbench local server is a required runtime dependency. Read [local server setup and lifecycle](references/local-server.md), resolve the current package root, ensure its owned service is healthy, and open the selected registered simulator. The package contains source and locked dependencies; installation alone does not mean the server is built or running. Observation-only and preparation-only requests that do not need a simulation do not start this server. Tailscale is an optional explicitly configured private-access addon; no Funnel/public exposure is implied. Printer/slicer MCP APIs, dashboard and widgets remain in Orca. This plugin exposes no MCP server of its own.
+For simulator work, route server status/lifecycle to
+[simulator-server](../simulator-server/SKILL.md), and a named project page to
+[simulator-page](../simulator-page/SKILL.md). The page task composes server
+resolution with page availability checks. Follow the selected recipe's intent and
+acceptance gates; page availability is not geometry validation. Pure observation
+or preparation that needs no simulator does not start the host. This plugin exposes
+no MCP server of its own; printer/slicer services remain external.

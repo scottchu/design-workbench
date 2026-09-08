@@ -6,7 +6,7 @@ Workbench also owns the shared [capability catalog](catalog/CAPABILITIES.md), [s
 
 Check this catalog locally with `uv run python scripts/check_registry.py`. Its current extraction and acceptance status is recorded in [workflow ownership](docs/iterations/2026-09-07-workflow-ownership/HANDOFF.md). Preserved [legacy Viewer controller source](tools/cad-viewer-service/README.md) retains its original host dependencies; this extraction does not install or operate that service.
 
-The foundation supplies a reproducible environment, diagnostics and a real CAD generation/export check. The [workflow plugin](packaging/README.md) now packages three skills and their shared contracts. The [local simulator host](apps/simulator/README.md) serves explicitly registered external builds; Laifen OpenSCAD WASM is the first integration. A general CAD editor and end-to-end fabrication acceptance remain future work.
+The foundation supplies a reproducible environment, diagnostics and a real CAD generation/export check. The [workflow plugin](packaging/README.md) now packages five skills and their shared contracts. The [local simulator host](apps/simulator/README.md) serves explicitly registered external builds; Laifen OpenSCAD WASM is the first integration. A general CAD editor and end-to-end fabrication acceptance remain future work.
 
 ## Local setup
 

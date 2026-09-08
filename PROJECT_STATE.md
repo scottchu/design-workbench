@@ -1,7 +1,7 @@
 # Project state
 
 Updated: 2026-09-08. Active handoff:
-[main cutover and new worktree](docs/iterations/2026-09-08-main-handoff/HANDOFF.md).
+[composable skills pilot](docs/iterations/2026-09-08-composable-skills/HANDOFF.md).
 Use [NEXT_AGENT.md](NEXT_AGENT.md) as the fresh-session entrypoint.
 
 ## Delivered
@@ -31,7 +31,20 @@ and has optional private Tailscale Serve8454. User confirmed phone access.
 
 ## Current gate and next action
 
-Gate: actual invocation of the installed skill in a new conversation. Next: resolve
+Current user-directed work supersedes the earlier next-action ordering below:
+[decision 0003](docs/decisions/0003-composable-skills.md) and the local step 2 pilot
+are implemented on `codex/composable-skills`. Source now has five skills, including
+simulator-server and simulator-page; workbench-flow routes to those task owners.
+The candidate package passed local readback and focused checks; see
+[validation](docs/iterations/2026-09-08-composable-skills/VALIDATION.md) and
+[independent review](docs/iterations/2026-09-08-composable-skills/REVIEW.md).
+The installed three-skill plugin and runtime are unchanged. No remote delivery or
+consumer repinning occurred. Next: deliver this reviewed source through the PR
+route once remote push is authorized, then separately scope installed-skill/live
+invocation acceptance. Sticker splitting remains deferred until the playground
+pilot is accepted. The historical fresh-session invocation gate remains pending.
+
+Earlier gate: actual invocation of the installed skill in a new conversation. Resolve
 the existing runtime binding and open Laifen through workbench-flow, reusing the
 current server. User decision needed: none for this bounded check. The separate
 roadmap milestone 1 measurement/build-identity contract is still incomplete;

@@ -1,5 +1,15 @@
 # Architecture and ownership
 
+## Workflow and skill composition
+
+[Decision 0003](decisions/0003-composable-skills.md) defines the next incremental
+refinement: project records own intent and evidence, workflow Markdown composes
+tasks and gates, focused skills guide each task, and tools execute operations.
+The local source pilot extracts server and page lifecycle guidance into
+`simulator-server` and `simulator-page`, with `workbench-flow` routing to them.
+Source packaging now contains five skills; installed-plugin and live invocation
+acceptance remain separate from this extraction.
+
 ## Product boundary
 
 CAD Workbench owns the workflow plugin and a dedicated local SvelteKit simulator host. It connects project-owned intent, geometry and evidence through explicit provider bindings. The separate printer/slicer project retains its MCP, API, dashboard and widgets; Workbench coordinates those capabilities through skills without absorbing their services. This user decision supersedes the earlier broad application-backend proposal.
