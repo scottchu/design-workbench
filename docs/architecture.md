@@ -29,6 +29,17 @@ remains maintained source: no docs-to-code compiler or complete reproducible
 docs-to-product pipeline has been demonstrated. Adopting intent authority is not
 a claim that implementation can already be discarded and regenerated.
 
+The subsequent [source sufficiency target](product.md#source-sufficiency-target)
+requires capturing enough behavior in document source to reconstruct declared
+outputs. The [first experiment](iterations/2026-09-08-docs-reconstruction/BRIEF.md)
+captures current request-admission behavior in one specification, freezes it,
+derives AST/ontology/composition views in a fresh agent context and compares the
+generated module with independent expectations and the existing implementation.
+This is manual interpretation with sampled behavioral evidence. It does not
+implement a general parser, prove category laws, or establish byte-identical
+generation. Generated models and code are designated experimental fixtures;
+production continues to use its existing implementation.
+
 Document format does not determine authority. Product requirements, proposed
 architecture, agent instructions and observed results can all be Markdown while
 having different roles. Give each rule one owner, link to it from other views,

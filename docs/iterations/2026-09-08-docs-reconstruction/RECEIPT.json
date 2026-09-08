@@ -1,0 +1,66 @@
+{
+  "role": "derived experiment evidence; not product intent or a compiler recipe",
+  "baseline_commit": "37d78685961bdfd54d9d78afa9a16aca936bd163",
+  "source_at_generation": {
+    "path": "docs/source/playground-access.md",
+    "sha256": "bc2a35ff0db876268de39b07bdf0b17b9dfa86490a488291e1f9cb9e74650599",
+    "version": 1,
+    "state": "declared new source, frozen before builder invocation"
+  },
+  "target": {
+    "runtime": "v26.7.0",
+    "format": "JavaScript ESM",
+    "dependencies": [
+      "Node built-in URL",
+      "Node built-in Headers"
+    ]
+  },
+  "generation": {
+    "method": "fresh agent manually interpreted frozen source into model, then wrote candidate",
+    "agent": "/root/reconstruct_access",
+    "isolation": "instruction-enforced read scope on shared filesystem, not sandboxed isolation",
+    "reported_product_inputs": [
+      "docs/source/playground-access.md"
+    ],
+    "reported_additional_reads": "own generated model and candidate for smoke checks",
+    "source_revisions": 1,
+    "candidate_rounds": 1,
+    "unresolved_reported": [],
+    "compiler_version": "none: no versioned compiler implemented; harness/model identity not captured sufficiently for exact replay"
+  },
+  "derived_outputs": [
+    {
+      "path": "fixtures/reconstruction/access/model.json",
+      "sha256": "b44b1394c0abe6745c46c8e99e3312f90aa79c5c02f1959f80cc736a72a25eab"
+    },
+    {
+      "path": "fixtures/reconstruction/access/access.mjs",
+      "sha256": "22fdb33fc3b622006d8c1cd6d91c6ffb7d077bfd87e00894b655fef3c0244ec9"
+    }
+  ],
+  "acceptance_inputs": [
+    {
+      "path": "apps/playground/src/lib/server/access.js",
+      "sha256": "736b251d5b24105582fa06b96d23a4a2c2d1f962af4646fd68cdec705be43eea"
+    },
+    {
+      "path": "tests/test_access_reconstruction.mjs",
+      "sha256": "6925172d74a47d9480b1b3f7e928b000d21b003c76c3d8602bc74e2f30682e22"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node --test tests/test_access_reconstruction.mjs",
+      "exit_code": 0,
+      "tests_passed": 106,
+      "tests_failed": 0,
+      "differential_request_samples": 5148
+    },
+    {
+      "command": "inline uv run python model/source check",
+      "exit_code": 0,
+      "result": "source freeze unchanged, three model views present, all seven rule IDs represented, no unresolved reported"
+    }
+  ],
+  "claim": "sampled behavioral compatibility for the declared input domain, not whole-product reconstruction, byte-identical generation, or proved categorical semantics"
+}

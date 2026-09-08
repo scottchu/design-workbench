@@ -1,7 +1,7 @@
 # Project state
 
 Updated: 2026-09-08. Active handoff:
-[Product and source boundaries](docs/iterations/2026-09-08-product-boundaries/HANDOFF.md).
+[Docs-only reconstruction pilot](docs/iterations/2026-09-08-docs-reconstruction/HANDOFF.md).
 This file records the state of Design Workbench software; consumer design/image
 projects retain their own requirements, candidates, decisions and approvals.
 
@@ -33,13 +33,15 @@ Merge/source delivery and Playground runtime refresh are complete. Five-skill
 installation and fresh-session installed-skill acceptance remain pending and were
 explicitly excluded from this refresh. Do not perform them as incidental setup.
 
-The user approved documenting the product and its intent-source, implementation,
-deliverable and runtime boundaries after comparing Agentic Compiler's direction.
-[Product intent](docs/product.md) now owns why/how/what; [architecture](docs/architecture.md)
-owns the separation, and README provides navigation. This is documentation work;
-it does not introduce a compiler, reorganize folders or relocate the runtime.
-The next bounded step is review and integration of this documentation PR before
-selecting further implementation work. No new roadmap milestone has started.
+Product/source boundaries are proposed for integration in PR6. The user then
+authorized a bounded reconstruction experiment toward docs sufficient to rebuild
+declared product outputs. [Product intent](docs/product.md) owns that target;
+[architecture](docs/architecture.md) distinguishes it from current implementation.
+The pilot freezes one request-admission specification, derives AST/ontology and
+typed composition views, and reconstructs a module with a fresh agent. Its
+fixtures are experimental outputs, not production replacements. Results and the
+next bounded action belong in the active handoff; no live runtime changes or
+full-product reproducibility claims follow from this experiment.
 
 The [roadmap](docs/roadmap.md) retains R1 installed-skill acceptance, then a bounded
 R2 read-only MCP contract. Workbench MCP and consistent-image production are still
