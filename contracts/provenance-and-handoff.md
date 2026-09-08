@@ -1,0 +1,7 @@
+# Provenance and handoff contract
+
+Start from the [project-owned binding](project-binding.md). Identify Workbench policy manifest SHA-256 separately from the project revision and immutable decision-bearing input manifest. Source plus explicit parameters remains geometry authority. Commands name their actual working directory, argument array, provider/runtime version and exit result; artifacts name actual written paths and SHA-256. Preserve failed receipts and bind new candidates separately.
+
+The [receipt schema](receipt.schema.json) records a bounded run, not approval. Evidence carries a quality and layer. CAD/source, written artifact, slicer and physical acceptance never imply one another. Sticker machine audit, human defect review and user design approval are likewise separate. Record independent role identities, findings, pending risks and one next action. A new declared input invalidates only gates that included it.
+
+`domain_extension.cad` records separate CAD/source, written-artifact/slicer and physical states plus relevant measured evidence and physical unknowns. `domain_extension.sticker` records gate, contract hash, candidate hashes, machine status, human disposition and exact approval path/hash. These extension payloads remain domain-defined; the common JSON Schema checks only the envelope and does not prove geometric correctness, review independence, current artifact matching or acceptance. The registry checker validates discovery structure and policy hashes, not receipt execution or recipe success.

@@ -1,0 +1,22 @@
+{
+  "name": "@cad-workbench/simulator",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4179 --strictPort",
+    "build": "vite build",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
+    "test": "node --test tests/*.test.js",
+    "start": "HOST=127.0.0.1 PORT=4179 node build"
+  },
+  "devDependencies": {
+    "@sveltejs/kit": "2.70.3",
+    "@sveltejs/adapter-node": "5.5.7",
+    "@sveltejs/vite-plugin-svelte": "7.3.0",
+    "svelte": "5.57.0",
+    "vite": "8.2.2",
+    "svelte-check": "4.7.6",
+    "typescript": "5.9.3"
+  }
+}

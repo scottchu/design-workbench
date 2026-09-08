@@ -1,0 +1,5 @@
+<script>let { data } = $props();</script>
+<svelte:head><title>{data.sim.title} · Workbench</title></svelte:head>
+<header><a href="/">← 模擬器</a><strong>{data.sim.title}</strong><details><summary>來源與產物</summary><p>{data.sim.source.entrypoint}</p><p>Revision: {data.sim.source.revision}</p><p>Source SHA-256: {data.sim.source.sha256}</p><p>Entry SHA-256: {data.sim.artifact}</p><p>這是原專案的工具；畫面或匯出不代表實體驗收。</p></details></header>
+<iframe title={data.sim.title} src={'/assets/' + data.sim.id + '/' + data.sim.entrypoint} allow="cross-origin-isolated" sandbox="allow-scripts allow-same-origin allow-downloads"></iframe>
+<style>:global(body){margin:0;background:#f4f5f2;color:#202820;font-family:system-ui,sans-serif}header{min-height:54px;box-sizing:border-box;display:flex;align-items:center;gap:28px;padding:14px 24px}a{color:#315d3c}details{margin-left:auto;font-size:12px}details[open]{position:absolute;right:18px;top:12px;max-width:80vw;background:white;padding:12px;border:1px solid #ddd;z-index:2;overflow-wrap:anywhere}iframe{display:block;width:100%;height:calc(100dvh - 60px);border:0;background:white}</style>

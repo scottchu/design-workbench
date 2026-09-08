@@ -1,0 +1,287 @@
+{
+  "source_repository": "https://github.com/scottchu/design-projects",
+  "source_revision": "71d661c14098860b7a374e13043fb084994be8a0",
+  "source_checkout_note": "0868 disappeared after initial verification; immutable blobs were read through canonical Git object database only, without reading canonical working files. Replacement design-projects-workflow-separation reverified by coordinator. Cause unknown.",
+  "files": [
+    {
+      "source_path": ".agents/skills/design-reflection/SKILL.md",
+      "source_sha256": "79c08a44688264213064645a026aaffb0c7638c46dc14e21625e3e28e83c04ca",
+      "destination_path": "skills/design-reflection/SKILL.md",
+      "destination_sha256": "267dfdfd0073020361d787baa31ae47f946be2a788d9fcd79c29d10a4b8dc7dc",
+      "disposition": "adapted-external-binding"
+    },
+    {
+      "source_path": ".agents/skills/design-reflection/agents/openai.yaml",
+      "source_sha256": "b3e530886e6daecc3984d4ce238f93b885b08677f8995fd3fc04dd6bb3b6434a",
+      "destination_path": "skills/design-reflection/agents/openai.yaml",
+      "destination_sha256": "b3e530886e6daecc3984d4ce238f93b885b08677f8995fd3fc04dd6bb3b6434a",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": ".agents/skills/sticker-pack-production/SKILL.md",
+      "source_sha256": "d141989403bb7d65feeabb5fafa624d6c6bf86d7ba82d58d89ac922756c9ee88",
+      "destination_path": "skills/sticker-pack-production/SKILL.md",
+      "destination_sha256": "a27b0397eda34c18f53d166f30166413a6b9ca9de810bf96de62c788a95337c9",
+      "disposition": "adapted-external-binding"
+    },
+    {
+      "source_path": ".agents/skills/sticker-pack-production/references/gates-g0-g3.md",
+      "source_sha256": "410482b651946a3c2a71aab3e7d191aad78e3d24a51e9b62c92de648623b03aa",
+      "destination_path": "skills/sticker-pack-production/references/gates-g0-g3.md",
+      "destination_sha256": "410482b651946a3c2a71aab3e7d191aad78e3d24a51e9b62c92de648623b03aa",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": ".agents/skills/sticker-pack-production/references/review-rubric.md",
+      "source_sha256": "155c0d283326d4095b51038dd5b17d894632dd077b3515e73c26ae7f921df827",
+      "destination_path": "skills/sticker-pack-production/references/review-rubric.md",
+      "destination_sha256": "155c0d283326d4095b51038dd5b17d894632dd077b3515e73c26ae7f921df827",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": ".agents/skills/sticker-pack-production/templates/pack-contract.example.json",
+      "source_sha256": "a1b4bd0cff33efd0ac1c7297f0038fc54339558b6c9d7319deff83b2c9b84f57",
+      "destination_path": "skills/sticker-pack-production/templates/pack-contract.example.json",
+      "destination_sha256": "a1b4bd0cff33efd0ac1c7297f0038fc54339558b6c9d7319deff83b2c9b84f57",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": ".agents/skills/sticker-pack-production/templates/review-disposition.csv",
+      "source_sha256": "dadb28c7fcac171edb20faaef38faac3cec7d9fdaacea2ec42a5f96e4d74fe0f",
+      "destination_path": "skills/sticker-pack-production/templates/review-disposition.csv",
+      "destination_sha256": "dadb28c7fcac171edb20faaef38faac3cec7d9fdaacea2ec42a5f96e4d74fe0f",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "docs/ADDING_A_PROJECT.md",
+      "source_sha256": "a42ea4b61ff5b1159a3954ecbe3d067790ea1b5d914bde560e4024bd9f72d939",
+      "destination_path": "workflows/policies/ADDING_A_PROJECT.md",
+      "destination_sha256": "211e9fb5c392334afaeba9d4e366419fe249d204b5c33d3be9f33a205b30fa8d",
+      "disposition": "adapted-external-binding"
+    },
+    {
+      "source_path": "docs/CAD_WORKFLOW.md",
+      "source_sha256": "a0465445b26b59eec7608a0fc4074c3e64227bab2733e917d5a9fbf19ba2d0ca",
+      "destination_path": "workflows/policies/CAD_WORKFLOW.md",
+      "destination_sha256": "e6d507222945e0dbf3935c86911cba3d5e49f37e3f319355bed2d59b3eb675de",
+      "disposition": "adapted-external-binding"
+    },
+    {
+      "source_path": "docs/FDM_DESIGN_RULES.md",
+      "source_sha256": "891147d9d3e2970fddbc48625db05631fdcc71e3f9f742e06d242cc2be653161",
+      "destination_path": "workflows/policies/FDM_DESIGN_RULES.md",
+      "destination_sha256": "57017784de38a6000f57c850db5567d5392b827eb0f564f029b0bc903e52a38e",
+      "disposition": "adapted-external-binding"
+    },
+    {
+      "source_path": "docs/PROJECT_CONTINUITY.md",
+      "source_sha256": "16f7a84a9cc8f67fc58573f1c0c20e6ac31f1720225235eef38466fc5f190c95",
+      "destination_path": "workflows/policies/PROJECT_CONTINUITY.md",
+      "destination_sha256": "fbde4235cdd30f82297251040bc2efdac99a97d7078be73d4276c4d3d8b4c256",
+      "disposition": "adapted-external-binding"
+    },
+    {
+      "source_path": "docs/templates/project-continuity/ADR.md",
+      "source_sha256": "89337119dae7c6040a36262f946112a5bd303122c82a8d3d6ac2150c7cc7e2a1",
+      "destination_path": "templates/project-continuity/ADR.md",
+      "destination_sha256": "a76adc939c36e1d051127235b7eeb5e3c0fbf3414ba3fee004d393f8b267b00c",
+      "disposition": "adapted-whitespace"
+    },
+    {
+      "source_path": "docs/templates/project-continuity/EXPERIENCE.md",
+      "source_sha256": "526a16104c8eec36856b46665beea4df7e945a5152da080278d6007e774e1b07",
+      "destination_path": "templates/project-continuity/EXPERIENCE.md",
+      "destination_sha256": "526a16104c8eec36856b46665beea4df7e945a5152da080278d6007e774e1b07",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "docs/templates/project-continuity/ITERATION_BRIEF.md",
+      "source_sha256": "8a67202c5b4d869197ef917771e15b742483c19743794da3684918d7c3c5ddd7",
+      "destination_path": "templates/project-continuity/ITERATION_BRIEF.md",
+      "destination_sha256": "8a67202c5b4d869197ef917771e15b742483c19743794da3684918d7c3c5ddd7",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "docs/templates/project-continuity/ITERATION_DESIGN.md",
+      "source_sha256": "8298694aabe02c4c77980798ef33443dc5d9210f47931bba91b0534c2bac6a50",
+      "destination_path": "templates/project-continuity/ITERATION_DESIGN.md",
+      "destination_sha256": "8298694aabe02c4c77980798ef33443dc5d9210f47931bba91b0534c2bac6a50",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "docs/templates/project-continuity/ITERATION_HANDOFF.md",
+      "source_sha256": "840b53776dfdf7f5288409d2e6d00c6d43b24011ba6f0537104c29673191dacd",
+      "destination_path": "templates/project-continuity/ITERATION_HANDOFF.md",
+      "destination_sha256": "840b53776dfdf7f5288409d2e6d00c6d43b24011ba6f0537104c29673191dacd",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "docs/templates/project-continuity/ITERATION_REVIEW.md",
+      "source_sha256": "78f4332b386db3594c1fc24d23705f16f056f596dd1563c144f4936e867d37bf",
+      "destination_path": "templates/project-continuity/ITERATION_REVIEW.md",
+      "destination_sha256": "78f4332b386db3594c1fc24d23705f16f056f596dd1563c144f4936e867d37bf",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "docs/templates/project-continuity/ITERATION_VALIDATION.md",
+      "source_sha256": "d8111b7bc4825c0c354f67aff0b433de9bd81fa6a019f93c9df82c9ce059d1e6",
+      "destination_path": "templates/project-continuity/ITERATION_VALIDATION.md",
+      "destination_sha256": "d8111b7bc4825c0c354f67aff0b433de9bd81fa6a019f93c9df82c9ce059d1e6",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "docs/templates/project-continuity/NEXT_AGENT.md",
+      "source_sha256": "02f6f40b4e49137a501e117b8ba4e4fb73f23e90b5dad51eebb17118b1865c28",
+      "destination_path": "templates/project-continuity/NEXT_AGENT.md",
+      "destination_sha256": "02f6f40b4e49137a501e117b8ba4e4fb73f23e90b5dad51eebb17118b1865c28",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "docs/templates/project-continuity/PRINTING_PROFILE.md",
+      "source_sha256": "faa430c1ad9021a3957aa28cf5170874007a18f2a8248eb4b653a12a408bfe80",
+      "destination_path": "templates/project-continuity/PRINTING_PROFILE.md",
+      "destination_sha256": "12707e4265649daf067d2c8c2ce776f301d9f93007e7e0da82a5aafe923f941d",
+      "disposition": "adapted-external-binding"
+    },
+    {
+      "source_path": "docs/templates/project-continuity/PROJECT_STATE.md",
+      "source_sha256": "c969d4845ff61eff69ea9490b0c61f4fa09fba17ff5d72a87fc036888a970ec0",
+      "destination_path": "templates/project-continuity/PROJECT_STATE.md",
+      "destination_sha256": "c969d4845ff61eff69ea9490b0c61f4fa09fba17ff5d72a87fc036888a970ec0",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "docs/templates/project-continuity/REQUIREMENTS.md",
+      "source_sha256": "8b9b8d297066bd693cfd9b975d6eb2dda51b61885bfb4c2d358ba8c7a4365b37",
+      "destination_path": "templates/project-continuity/REQUIREMENTS.md",
+      "destination_sha256": "8b9b8d297066bd693cfd9b975d6eb2dda51b61885bfb4c2d358ba8c7a4365b37",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "docs/templates/project-continuity/release-manifest.example.json",
+      "source_sha256": "431df164d5ce6c3a6311087efeb82f9fbcc3f23b9fdc51b854180dcee0dc2a59",
+      "destination_path": "templates/project-continuity/release-manifest.example.json",
+      "destination_sha256": "431df164d5ce6c3a6311087efeb82f9fbcc3f23b9fdc51b854180dcee0dc2a59",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/DESIGN.md",
+      "source_sha256": "ebd6944efa36ae3851571d3d460edb0eb130093d03607be0c19d9cd08cb4709a",
+      "destination_path": "tools/cad-viewer-service/DESIGN.md",
+      "destination_sha256": "ebd6944efa36ae3851571d3d460edb0eb130093d03607be0c19d9cd08cb4709a",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/README.md",
+      "source_sha256": "2ba0a5495059959a271139318d327892252dc86020e58d1a16f9117a374d1644",
+      "destination_path": "tools/cad-viewer-service/README.md",
+      "destination_sha256": "2ba0a5495059959a271139318d327892252dc86020e58d1a16f9117a374d1644",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/VALIDATION.md",
+      "source_sha256": "d281abd6284d3893b91b4054eb207dbcba86411b3b9f5f5615fcd7a6eaf30562",
+      "destination_path": "tools/cad-viewer-service/VALIDATION.md",
+      "destination_sha256": "d281abd6284d3893b91b4054eb207dbcba86411b3b9f5f5615fcd7a6eaf30562",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/bin/cad-viewer",
+      "source_sha256": "2ad373107d6579251358cb4572429ed101c4fff9c6b2f7e11cd787c0ed17c9ff",
+      "destination_path": "tools/cad-viewer-service/bin/cad-viewer",
+      "destination_sha256": "2ad373107d6579251358cb4572429ed101c4fff9c6b2f7e11cd787c0ed17c9ff",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/payload/bin/cad-viewer",
+      "source_sha256": "998bb2b6d0cce1354ceb245e721c53fdfd8054703b8b976cb67e39be28563484",
+      "destination_path": "tools/cad-viewer-service/payload/bin/cad-viewer",
+      "destination_sha256": "998bb2b6d0cce1354ceb245e721c53fdfd8054703b8b976cb67e39be28563484",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/payload/cli.mjs",
+      "source_sha256": "28c9cf3b249f40d3bc35fbe33d616fce8ad86aa701cc37ba0182e2ea718ec01a",
+      "destination_path": "tools/cad-viewer-service/payload/cli.mjs",
+      "destination_sha256": "28c9cf3b249f40d3bc35fbe33d616fce8ad86aa701cc37ba0182e2ea718ec01a",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/payload/config.mjs",
+      "source_sha256": "538e6b648ea41c054fe04b92256fc4bcd5803c4b433c4080880ebe8aac0c9163",
+      "destination_path": "tools/cad-viewer-service/payload/config.mjs",
+      "destination_sha256": "538e6b648ea41c054fe04b92256fc4bcd5803c4b433c4080880ebe8aac0c9163",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/payload/core.mjs",
+      "source_sha256": "ca6f49ff301ad34616658a9cde02bba75e61dffd3886a64cd47b9641341355bb",
+      "destination_path": "tools/cad-viewer-service/payload/core.mjs",
+      "destination_sha256": "ca6f49ff301ad34616658a9cde02bba75e61dffd3886a64cd47b9641341355bb",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/payload/install-manifest.json",
+      "source_sha256": "4e89ad3d2efce80b2381e439c43af0623245d1c2443fca5ea0fb24b10bb72988",
+      "destination_path": "tools/cad-viewer-service/payload/install-manifest.json",
+      "destination_sha256": "4e89ad3d2efce80b2381e439c43af0623245d1c2443fca5ea0fb24b10bb72988",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/payload/install.mjs",
+      "source_sha256": "2d4025bd45ea0e3bd9bc03ad97ae51a4afe253cab948d1c223ce06b9eb63f74e",
+      "destination_path": "tools/cad-viewer-service/payload/install.mjs",
+      "destination_sha256": "2d4025bd45ea0e3bd9bc03ad97ae51a4afe253cab948d1c223ce06b9eb63f74e",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/payload/launch-viewer.mjs",
+      "source_sha256": "ab17131a164890d062f5538b80f511074d9e6522adfcc95e72408a7bb8a1f596",
+      "destination_path": "tools/cad-viewer-service/payload/launch-viewer.mjs",
+      "destination_sha256": "ab17131a164890d062f5538b80f511074d9e6522adfcc95e72408a7bb8a1f596",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/payload/launchd/com.scottchu.cad-viewer.plist.template",
+      "source_sha256": "8a290cf3b1d40611b59469a38c46a9f54c876bba7ebd616847ed561293f07211",
+      "destination_path": "tools/cad-viewer-service/payload/launchd/com.scottchu.cad-viewer.plist.template",
+      "destination_sha256": "8a290cf3b1d40611b59469a38c46a9f54c876bba7ebd616847ed561293f07211",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/scripts/generate-install-manifest.mjs",
+      "source_sha256": "3f1c4b616db9368da834cd44d6478ff9024de097c14c6bbf8ab60eb873a547fe",
+      "destination_path": "tools/cad-viewer-service/scripts/generate-install-manifest.mjs",
+      "destination_sha256": "3f1c4b616db9368da834cd44d6478ff9024de097c14c6bbf8ab60eb873a547fe",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/tests/anchor-fixture.mjs",
+      "source_sha256": "04d648681ffb1e45112885576b4a7c76e2c794f23d412ba379daaed43cc0d80b",
+      "destination_path": "tools/cad-viewer-service/tests/anchor-fixture.mjs",
+      "destination_sha256": "04d648681ffb1e45112885576b4a7c76e2c794f23d412ba379daaed43cc0d80b",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/tests/core.test.mjs",
+      "source_sha256": "7883c3780a5637a2c38aaaa9f1d3a1a7cf337e4ef3f20f5aea1c44931afaf3eb",
+      "destination_path": "tools/cad-viewer-service/tests/core.test.mjs",
+      "destination_sha256": "7883c3780a5637a2c38aaaa9f1d3a1a7cf337e4ef3f20f5aea1c44931afaf3eb",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/tests/install.test.mjs",
+      "source_sha256": "96adde00ccc98be4f209e03ecbde78c6f0384655ed979da70456ef12a2f2478d",
+      "destination_path": "tools/cad-viewer-service/tests/install.test.mjs",
+      "destination_sha256": "96adde00ccc98be4f209e03ecbde78c6f0384655ed979da70456ef12a2f2478d",
+      "disposition": "byte-identical"
+    },
+    {
+      "source_path": "tools/cad-viewer-service/tests/runtime-refresh.test.mjs",
+      "source_sha256": "3e9f55be9bad49e1b5c360767a9574105a80a0e5aece8d094f9919b77b7f2d9d",
+      "destination_path": "tools/cad-viewer-service/tests/runtime-refresh.test.mjs",
+      "destination_sha256": "3e9f55be9bad49e1b5c360767a9574105a80a0e5aece8d094f9919b77b7f2d9d",
+      "disposition": "byte-identical"
+    }
+  ]
+}
