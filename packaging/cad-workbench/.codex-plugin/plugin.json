@@ -1,6 +1,6 @@
 {
   "name": "cad-workbench",
-  "version": "0.2.0",
+  "version": "0.2.0+codex.20260908102059",
   "description": "Bound project workflows with separate CAD, slicer and printer providers.",
   "author": {
     "name": "Scott Chu"

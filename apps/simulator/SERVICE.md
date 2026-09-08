@@ -93,3 +93,19 @@ and health providers. These tests do not start or modify a live launchd service.
 Real launchd health, browser access, login persistence and private-tailnet access
 require separate root acceptance evidence. No lifecycle command was executed by
 the implementation worker.
+
+## Installed plugin and existing runtime
+
+A plugin cache update must not relocate an already running server. A user-local
+`~/.config/cad-workbench/runtime.json` can bind the installed skill to the existing
+runtime, using `version: 1`, `runtime_root` (canonical absolute root), `instance`
+(the root-derived identity described above), and `local_url` (the fixed URL).
+The skill validates that binding and runs this unchanged controller from the
+bound root with its existing uv environment. The controller does not automatically
+read this file or weaken its checkout ownership checks. Missing/mismatched
+bindings require explicit setup; they never justify adopting another process.
+
+This file is machine-local setup, not part of a plugin package. An existing binding
+is preserved unless relocation is explicitly requested. A fresh plugin install
+can therefore reuse a healthy service without installing another runtime in its
+cache or changing launchd/Tailscale configuration.

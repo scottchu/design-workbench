@@ -13,3 +13,5 @@ Use root uv/npm tooling. `npm run dev:simulator` binds 127.0.0.1:4179; the app R
 No merge, plugin installation, deployment, printer operation or Tailscale change is implied by PR delivery. The generic CAD foundation is previously validated; rerun its expensive checks only when relevant changes justify it. Roadmap milestones describe remaining contracts, not shipped capabilities.
 
 Latest follow-up: read [managed simulator service](docs/iterations/2026-09-07-simulator-service/BRIEF.md) and its HANDOFF before runtime work. The user explicitly authorized setting up this local server and a private Tailscale Serve endpoint. Other services remain out of scope. Use the lifecycle helper instead of leaving a task-owned Vite process as the normal runtime.
+
+Plugin is now installed/enabled. Read the [2026-09-08 installation handoff](docs/iterations/2026-09-08-plugin-install/HANDOFF.md). Use the verified user-local runtime binding before invoking lifecycle commands; the plugin cache is not the existing server owner root. A new conversation should verify skill pickup without reinstallation.

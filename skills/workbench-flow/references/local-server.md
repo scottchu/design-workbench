@@ -10,11 +10,25 @@ Resolve the installed plugin/package root, then read its
 the external design repository as the service root. Project source and built
 simulator assets stay external and are selected by explicit local registration.
 
-From the resolved package root, prepare the pinned tools and sole root runtimes
-when missing, using `uv sync --locked --all-packages --all-groups`, `npm ci` and
+Before preparing a runtime, inspect the optional user-local binding at
+`~/.config/cad-workbench/runtime.json`. Version 1 contains `runtime_root`,
+`instance` and `local_url`. Require an absolute canonical runtime root,
+`local_url` equal to `http://127.0.0.1:4179`, and `instance` equal to the first
+24 hex characters of SHA-256 over that root. Run the existing root lifecycle
+controller there and require its status identity to match. A mismatch is an
+explicit configuration error; do not replace the binding or adopt another job.
+This binding selects an existing runtime; it is not permission to install or
+reconfigure a service. Keep it outside the distributed plugin.
+
+When the binding is valid, use that runtime root and its existing root environment
+for every lifecycle command below. Do not install dependencies in the plugin cache.
+If the binding is absent, use an explicitly selected durable Workbench runtime
+root (the package can supply its source), then prepare its pinned tools and sole
+root runtimes when missing, using `uv sync --locked --all-packages --all-groups`, `npm ci` and
 `npm run build:simulator`. These are setup steps, not evidence of CAD correctness.
 No nested install, copied environment or untracked project assets belong in the
-package. Configuration and lifecycle state live under ignored `.workbench/`.
+package. Configuration and lifecycle state live under that runtime root's ignored `.workbench/`. Record a user-local binding only after its real status/health
+identity is verified. Never silently replace an existing binding.
 
 Use the packaged lifecycle instead of creating another dev-server process:
 
