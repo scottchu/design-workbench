@@ -17,7 +17,9 @@ consumers now pin the reconciled provider `1d7f4fc`. See
 [main handoff](../2026-09-08-main-handoff/HANDOFF.md) and root NEXT_AGENT.md for the
 new worktree and observed merge identities. A new conversation should exercise
 the installed skill; full portable CAD-to-print execution remains unverified.
-Preserve the old bound runtime worktree until explicit relocation.
+The user subsequently authorized and completed relocation to canonical main; see
+[relocation evidence](../2026-09-08-main-handoff/RUNTIME_RELOCATION.md). Earlier
+old-root installation records below remain historical.
 
 ## Original installation record
 

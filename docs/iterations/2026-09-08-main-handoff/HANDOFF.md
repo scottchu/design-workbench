@@ -1,5 +1,11 @@
 # Main cutover and fresh-agent handoff
 
+Current runtime update: the user subsequently authorized stopping the 7e46
+instance and restarting from canonical main. This is completed; the binding now
+selects `/Users/scottchu/Projects/personal/CAD-workbench`, instance
+`21834b4148066f30e0379325`. See [RUNTIME_RELOCATION.md](RUNTIME_RELOCATION.md).
+The earlier runtime-preservation instructions below are historical and superseded.
+
 Date: 2026-09-08. The user explicitly requested merging this thread's work into
 main and handing off under a new worktree. The three implementation PRs are now
 MERGED, verified through GitHub after exact-head merge commands:
