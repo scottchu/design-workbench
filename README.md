@@ -1,12 +1,36 @@
-# CAD Workbench
+# Design Workbench
 
-CAD Workbench provides a workflow plugin and one local SvelteKit server for project simulators. Actual designs and simulation logic remain in their project repositories; the separate printer/slicer project owns its MCP, API, dashboard and widgets.
+Help people and agents produce, inspect and revise designs from project-owned
+specifications while preserving intent, consistency, evidence and approval.
 
-Workbench also owns the shared [capability catalog](catalog/CAPABILITIES.md), [sticker production](workflows/sticker-production.md) and [CAD fabrication](workflows/cad-fabrication.md) recipes, [project binding contract](contracts/project-binding.md), reusable skills and project-record templates. Project repositories select a specific workflow revision and retain their source, assets, commands and evidence. The catalog distinguishes documented methods from runtime capabilities and does not imply that a recipe has been executed successfully.
+The product is an installable design workflow plugin, with focused skills, documented
+workflows and executable tools for CAD, images and future design outcomes. Its
+Playground hosts project-built interactive review pages. Projects retain their
+actual designs, references, requirements, page logic, artifacts and approvals.
 
-Check this catalog locally with `uv run python scripts/check_registry.py`. Its current extraction and acceptance status is recorded in [workflow ownership](docs/iterations/2026-09-07-workflow-ownership/HANDOFF.md). Preserved [legacy Viewer controller source](tools/cad-viewer-service/README.md) retains its original host dependencies; this extraction does not install or operate that service.
+Start with the [product definition](docs/product.md) for **why → how → what**, or
+read the [architecture](docs/architecture.md#intent-source-implementation-delivery-and-runtime)
+for the boundary between intent source, implementation, deliverables and runtime.
+The [current state](PROJECT_STATE.md) records what is delivered and verified;
+[the roadmap](docs/roadmap.md) records pending work.
 
-The foundation supplies a reproducible environment, diagnostics and a real CAD generation/export check. The [workflow plugin](packaging/README.md) now packages five skills and their shared contracts. The [local project playground](apps/playground/README.md) serves explicitly registered external builds; Laifen OpenSCAD WASM is the first integration. A general CAD editor and end-to-end fabrication acceptance remain future work.
+## Find the owning material
+
+| Question | Where to read |
+| --- | --- |
+| What should the product do, and why? | [Product](docs/product.md), [architecture](docs/architecture.md), and their linked decisions. |
+| What tasks and procedures can an agent use? | [Capability catalog](catalog/CAPABILITIES.md), `skills/` and `workflows/`. The catalog indexes capabilities; it does not execute them. |
+| What information must components exchange? | [Contracts](contracts/project-binding.md); `templates/` supplies blank project records, not actual project status. |
+| Where is the software implemented and checked? | `apps/playground/`, executable `scripts/`, software `tests/` and generic `fixtures/`. `tools/` currently preserves [legacy Viewer maintenance source](tools/LEGACY_VIEWER.md). |
+| What gets shipped? | [Packaging](packaging/README.md): explicit package inputs, outputs and receipts. |
+| What is running or accepted now? | [PROJECT_STATE](PROJECT_STATE.md) and its evidence links. [NEXT_AGENT](NEXT_AGENT.md) is a startup pointer. |
+| How should an agent work on this repository? | [AGENTS](AGENTS.md). |
+
+The current source package contains five skills and Playground source. It does
+not automatically prepare or start a runtime, and no owned Workbench MCP is
+implemented yet. CAD and printer providers are separately maintained. General
+CAD editing and end-to-end fabrication acceptance remain pending. Local root
+folder names and compatibility identifiers such as `cad-workbench` are retained.
 
 ## Local setup
 
