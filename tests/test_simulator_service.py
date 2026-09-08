@@ -38,7 +38,7 @@ class LifecycleTests(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
         base=Path(self.tmp.name).resolve();self.root=base/'root';self.root.mkdir();self.home=base/'home'
-        self.entry=self.root/'apps/simulator/build/index.js';self.entry.parent.mkdir(parents=True);self.entry.write_text('// fixture')
+        self.entry=self.root/'apps/playground/build/index.js';self.entry.parent.mkdir(parents=True);self.entry.write_text('// fixture')
         self.node=base/'node';self.node.write_text('fixture');self.node.chmod(0o700)
         self.registry=self.root/'registry.json';self.registry.write_text('{}')
         self.fake=Fake();self.s=m.Service(self.root,home=self.home,uid=123,run=self.fake.run,read_health=self.fake.health,port_listening=lambda:bool(self.fake.path or self.fake.foreign),sleep=lambda _:None)
@@ -48,6 +48,46 @@ class LifecycleTests(unittest.TestCase):
         self.assertEqual(sum(c[0]=='bootstrap' for c in self.fake.calls),1)
         self.assertEqual(self.data['EnvironmentVariables']['HOST'],'127.0.0.1')
         self.assertEqual(self.data['EnvironmentVariables']['WORKBENCH_SIMULATORS'],str(self.registry))
+    def legacy_install(self):
+        import copy
+        legacy=self.root/m.LEGACY_BUILD_ENTRY
+        legacy.parent.mkdir(parents=True);legacy.write_text('// legacy fixture')
+        data=copy.deepcopy(self.data);data['ProgramArguments'][1]=str(legacy)
+        self.s.install(data)
+        return legacy,data
+    def test_legacy_entry_reused_without_restart_until_explicit_install(self):
+        legacy,data=self.legacy_install()
+        self.assertTrue(self.s.status()['managed'])
+        before=self.s.installed.read_bytes()
+        resolved=self.s.desired(self.node,self.registry,reuse=True)
+        self.assertEqual(resolved,data);self.s.ensure(resolved)
+        self.assertEqual(self.s.installed.read_bytes(),before)
+        self.assertEqual(sum(c[0]=='bootstrap' for c in self.fake.calls),1)
+        self.assertFalse(any(c[0]=='bootout' for c in self.fake.calls))
+        updated=self.s.desired(self.node,self.registry)
+        self.assertEqual(updated['ProgramArguments'][1],str(self.entry))
+        self.s.install(updated)
+        self.assertEqual(self.fake.config,updated)
+        self.assertEqual(sum(c[0]=='bootstrap' for c in self.fake.calls),2)
+        self.assertTrue(legacy.exists())
+    def test_missing_saved_legacy_build_never_falls_forward(self):
+        legacy,data=self.legacy_install();legacy.unlink()
+        before=len(self.fake.calls)
+        with self.assertRaisesRegex(m.ServiceError,'built server missing'):
+            self.s.desired(self.node,self.registry,reuse=True)
+        self.assertEqual(self.fake.config,data)
+        self.assertFalse(any(c[0] in ('bootout','bootstrap') for c in self.fake.calls[before:]))
+    def test_foreign_legacy_entry_refused_before_mutation(self):
+        import copy
+        foreign=copy.deepcopy(self.data)
+        foreign['ProgramArguments'][1]='/other/'+m.LEGACY_BUILD_ENTRY
+        self.s.installed.parent.mkdir(parents=True)
+        self.s.installed.write_bytes(plistlib.dumps(foreign))
+        before=self.s.installed.read_bytes()
+        with self.assertRaisesRegex(m.ServiceError,'foreign plist'):
+            self.s.desired(self.node,self.registry,reuse=True)
+        self.assertEqual(self.s.installed.read_bytes(),before)
+        self.assertFalse(any(c[0] in ('bootout','bootstrap') for c in self.fake.calls))
     def test_unmanaged_port_never_stopped(self):
         self.fake.foreign={'service':'someone-else','instance':'other'}
         with self.assertRaisesRegex(m.ServiceError,'another service'):self.s.ensure(self.data)
@@ -71,7 +111,7 @@ class LifecycleTests(unittest.TestCase):
         import copy
         self.s.install(self.data)
         original=self.s.installed.read_bytes()
-        changes=[('ProgramArguments',[str(self.node),'/other/apps/simulator/build/index.js']),
+        changes=[('ProgramArguments',[str(self.node),'/other/apps/playground/build/index.js']),
                  ('WorkingDirectory','/other')]
         for key,value in changes:
             with self.subTest(field=key):

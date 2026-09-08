@@ -1,5 +1,5 @@
 {
-  "name": "@cad-workbench/simulator",
+  "name": "@design-workbench/playground",
   "private": true,
   "version": "0.1.0",
   "type": "module",

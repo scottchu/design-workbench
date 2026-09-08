@@ -7,3 +7,6 @@ __pycache__/
 .env
 .env.*
 !.env.example
+# Keep a still-owned legacy service build ignored after the source-path rename.
+/apps/simulator/build/
+/apps/simulator/.svelte-kit/

@@ -20,6 +20,16 @@ interactive diagram or simulation that isolates one or two relationships. Tell
 the user what is fixed, what is adjustable, what to observe, and ask one explicit
 pass/fail question. Record the exact answer. This approves intent only.
 
+## Interactive playground route
+
+For interactive intent review, use [simulator-server](../skills/simulator-server/SKILL.md)
+to resolve/reuse the host and [simulator-page](../skills/simulator-page/SKILL.md)
+to select and verify the project build. A missing/stale page leaves interactive
+review pending; it does not invalidate independently available CAD evidence.
+Record the reviewed source/build and exact user disposition in the project.
+Page availability and user intent approval do not satisfy the geometry/export
+checks below. No simulation is required for an unrelated preparation-only task.
+
 ## Build and evidence sequence
 
 1. Design owns numeric parameters, datums, part roles, motion/service states,

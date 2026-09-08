@@ -1,6 +1,7 @@
-# Local simulator host
+# Local project playground
 
-One SvelteKit application lists explicitly registered external simulators and opens
+Playground is the shared project exploration/review application. Its current
+implementation lists explicitly registered external simulators and opens
 an existing built app in a full-height frame. It serves the original bytes; no
 project geometry, parameter logic, sources or design assets are copied here.
 Printer/slicer MCP/API/dashboard/widgets remain in Orca. Optional private
@@ -11,10 +12,10 @@ From Workbench root:
 
 ```sh
 npm ci
-npm run check:simulator
-npm run test:simulator
-npm run build:simulator
-npm run dev:simulator
+npm run check:playground
+npm run test:playground
+npm run build:playground
+npm run dev:playground
 ```
 
 Open http://127.0.0.1:4179/. The default dev/start commands bind only loopback;
@@ -22,6 +23,15 @@ strictPort avoids silently selecting another port. Development uses the foregrou
 Vite process. For normal plugin use, build once and use the managed production
 server described in [SERVICE.md](SERVICE.md). The launcher supports lazy ensure/open
 and an explicitly installed macOS user LaunchAgent for login persistence.
+
+## Naming and compatibility
+
+Source lives at `apps/playground`, workspace `@design-workbench/playground`.
+Canonical root scripts are `dev:playground`, `check:playground`,
+`test:playground` and `build:playground`; the old `*:simulator` scripts remain
+forwarding aliases. Existing `/simulators/<id>` and `/assets/<id>/...` URLs,
+registry schema, environment keys and service identity remain stable. Renaming the
+host does not add generic image-review features or change project simulation logic.
 
 ## Register an existing project
 
@@ -34,7 +44,7 @@ an arbitrary URL. Preserve prior releases and services.
 Run the explicit registration utility from Workbench root:
 
 ```sh
-node apps/simulator/scripts/register.mjs \
+node apps/playground/scripts/register.mjs \
   --id example --title 'Example simulator' \
   --asset-root /absolute/project/tmp/simulator-dist \
   --source-root /absolute/project \

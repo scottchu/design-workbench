@@ -1,5 +1,34 @@
 # Architecture and ownership
 
+## Planned evolution: purpose, composition and owned execution
+
+The [roadmap](roadmap.md) records the user's subsequent direction. Document each
+layer as why -> how -> what; use project purpose, requirements, candidate identity
+and evidence needs to select focused domain tasks. Shared task/evidence contracts
+do not require identical image and CAD validators or a universal workflow engine.
+
+Planned Workbench ownership expands to a narrow MCP interface for its own
+playground operations, reusing the existing tools. This refines the previous
+no-own-MCP scope for future implementation; no Workbench MCP exists or is installed
+yet. The HTTP simulator host and external CAD/art/printer providers retain their
+current boundaries. The first tool contract and transport are still to be defined.
+
+Consistent-image production will be extracted from sticker production, with
+project-selected invariants and variation. Sticker outcome procedures retain their
+reusable format/preflight knowledge; the project owns actual requirements and
+approvals. Existing skills and safeguards remain in force until that extraction
+passes its own acceptance gates. These are planned changes, not delivered behavior.
+
+## Workflow and skill composition
+
+[Decision 0003](decisions/0003-composable-skills.md) defines the next incremental
+refinement: project records own intent and evidence, workflow Markdown composes
+tasks and gates, focused skills guide each task, and tools execute operations.
+The local source pilot extracts server and page lifecycle guidance into
+`simulator-server` and `simulator-page`, with `workbench-flow` routing to them.
+Source packaging now contains five skills; installed-plugin and live invocation
+acceptance remain separate from this extraction.
+
 ## Product boundary
 
 CAD Workbench owns the workflow plugin and a dedicated local SvelteKit simulator host. It connects project-owned intent, geometry and evidence through explicit provider bindings. The separate printer/slicer project retains its MCP, API, dashboard and widgets; Workbench coordinates those capabilities through skills without absorbing their services. This user decision supersedes the earlier broad application-backend proposal.
@@ -21,7 +50,7 @@ The existing host-specific CAD Viewer controller is preserved as legacy maintena
 
 asdf pins Node.js, Bun and uv in `.tool-versions`. uv manages CPython 3.12.13 from `.python-version` and the sole root environment that hosts the pinned cadgen runtime. This scoped Python choice preserves the already selected installation without adding another base interpreter. Bun is available; npm remains the JavaScript workspace package manager. A diagnostic script verifies the required environment. A separate smoke script builds one source fixture and measures the written STEP. Ignored artifacts carry a receipt describing their source, command, runtime and checks.
 
-The root npm workspace now owns `apps/simulator`, a dedicated SvelteKit host. It adds no generalized job manager or persistent viewer service. The original foundation remains a small CLI/runtime layer.
+The root npm workspace now owns `apps/playground`, a dedicated SvelteKit host. It adds no generalized job manager or persistent viewer service. The original foundation remains a small CLI/runtime layer.
 
 The Python runtime installation and agent skill/plugin installation are separate concerns. A future skill should explain when and how to use a small supported command; it should not be the only place where reproducibility, argument validation or artifact identity are enforced.
 

@@ -1,7 +1,13 @@
 # Project state
 
+Repository identity update, 2026-09-08: GitHub renamed to
+`scottchu/design-workbench` to reflect CAD, image and future design domains.
+Local `origin` updated; repository ID, main commit, privacy, local folders and
+runtime binding are unchanged. The installed plugin keeps its existing identity.
+Subsequent authorized source delivery is open as [PR4](https://github.com/scottchu/design-workbench/pull/4); it is not merged.
+
 Updated: 2026-09-08. Active handoff:
-[main cutover and new worktree](docs/iterations/2026-09-08-main-handoff/HANDOFF.md).
+[playground source rename](docs/iterations/2026-09-08-playground-name/HANDOFF.md).
 Use [NEXT_AGENT.md](NEXT_AGENT.md) as the fresh-session entrypoint.
 
 ## Delivered
@@ -31,7 +37,34 @@ and has optional private Tailscale Serve8454. User confirmed phone access.
 
 ## Current gate and next action
 
-Gate: actual invocation of the installed skill in a new conversation. Next: resolve
+Latest follow-up renames application source to `apps/playground` and workspace
+`@design-workbench/playground`, keeping legacy npm aliases and service identity.
+Local build, 32 Python tests, 11 frontend tests and package readback passed; see
+the active validation/review. The controller can reuse verified same-root legacy
+build configurations; no live transition has been performed. This follows PR4
+and does not rename local root folders, install the plugin or alter consumer pins.
+
+Latest request compiles the accepted discussion into [the roadmap](docs/roadmap.md):
+why -> how -> what, focused context-selected tasks, planned owned playground MCP,
+consistent-image production and preserved CAD milestones. This is documentation,
+not implementation of those new capabilities. The local work is now pushed in [PR4](https://github.com/scottchu/design-workbench/pull/4).
+Next is PR review/merge, followed by separately scoped installed/live acceptance.
+See the active roadmap brief and handoff; do not execute all future milestones
+under the roadmap-writing request.
+
+Current user-directed work supersedes the earlier next-action ordering below:
+[decision 0003](docs/decisions/0003-composable-skills.md) and the local step 2 pilot
+are implemented on `codex/composable-skills`. Source now has five skills, including
+simulator-server and simulator-page; workbench-flow routes to those task owners.
+The candidate package passed local readback and focused checks; see
+[validation](docs/iterations/2026-09-08-composable-skills/VALIDATION.md) and
+[independent review](docs/iterations/2026-09-08-composable-skills/REVIEW.md).
+The installed three-skill plugin and runtime are unchanged. The branch is pushed
+and PR4 is open; no consumer repinning or merge occurred. Next: review/merge PR4,
+then separately scope installed-skill/live invocation acceptance. Sticker splitting remains deferred until the playground
+pilot is accepted. The historical fresh-session invocation gate remains pending.
+
+Earlier gate: actual invocation of the installed skill in a new conversation. Resolve
 the existing runtime binding and open Laifen through workbench-flow, reusing the
 current server. User decision needed: none for this bounded check. The separate
 roadmap milestone 1 measurement/build-identity contract is still incomplete;
