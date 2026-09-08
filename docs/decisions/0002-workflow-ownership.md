@@ -1,6 +1,6 @@
 # 0002 — Reusable workflows belong to CAD Workbench
 
-Status: accepted ownership direction; extraction candidate pending independent acceptance.
+Status: accepted; extraction and additive policy reconciliation passed independent review and merged into main on 2026-09-08. See the main-handoff iteration for current delivery identities.
 
 The user replaced the draft three-repository workflow-library proposal with CAD Workbench ownership of reusable capabilities, workflows and skills. Project repositories retain authoritative source and project-local generation logic, requirements, assets, decisions, acceptance records and release history. Workbench owns the reusable policies, templates, two skills, catalog, contracts and preserved legacy viewer source.
 

@@ -12,10 +12,12 @@ retained baseline paths and additive divergent-branch policy audit, and
 Both findings are resolved. This covers the audited baseline and divergent shared
 guidance, not every historical project lesson or every possible branch.
 
-Remaining: consumer bindings still select provider `36f4171`; the three migration
-PRs are open. Adoption/merge and canonical design-worktree cutover are not complete.
-A new conversation should exercise the updated skill; no full portable CAD-to-print
-execution has been certified. Preserve the bound runtime worktree until relocation.
+Current cutover update: the three migration PRs merged on 2026-09-08, and both
+consumers now pin the reconciled provider `1d7f4fc`. See
+[main handoff](../2026-09-08-main-handoff/HANDOFF.md) and root NEXT_AGENT.md for the
+new worktree and observed merge identities. A new conversation should exercise
+the installed skill; full portable CAD-to-print execution remains unverified.
+Preserve the old bound runtime worktree until explicit relocation.
 
 ## Original installation record
 
