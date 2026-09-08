@@ -103,3 +103,12 @@ by ensure/open or next login, not by a Tailscale request itself. The Mac must be
 awake for remote access. Plugin source is packaged, but no Codex plugin install or
 marketplace registration occurred. No new CAD, slicer or physical acceptance is
 claimed.
+
+## User phone confirmation — 2026-09-08
+
+The user reported: "It works on phone" after receiving the private simulator link.
+Record phone access as PASS, based on direct user feedback. The phone model,
+browser, network path and individual interaction/download steps were not specified.
+This closes the previously unobserved phone-access check; it does not establish
+reboot behavior, all mobile interactions, model correctness or print acceptance.
+The earlier browser/limits section retains the scope of the original agent test.
