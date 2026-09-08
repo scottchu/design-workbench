@@ -39,9 +39,13 @@ Earlier handoff instructions to preserve 7e46 as the live runtime are superseded
 
 ## Next bounded action
 
-The user now requested incremental workflow/skill separation. Read
+The latest user request compiled the discussion into [the roadmap](docs/roadmap.md).
+Read the [active roadmap handoff](docs/iterations/2026-09-08-roadmap/HANDOFF.md)
+first. It plans owned MCP and consistent-image capabilities without implementing
+them; the original CAD gates remain intact. The underlying skill separation is
+recorded in
 [decision 0003](docs/decisions/0003-composable-skills.md) and the
-[active handoff](docs/iterations/2026-09-08-composable-skills/HANDOFF.md).
+[skill extraction handoff](docs/iterations/2026-09-08-composable-skills/HANDOFF.md).
 Steps 1 and 2 record the architecture decision and extract simulator-server and
 simulator-page in local source. The five-skill candidate is verified but is not the
 installed three-skill plugin. Read active VALIDATION.md and REVIEW.md before

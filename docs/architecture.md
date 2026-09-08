@@ -1,5 +1,24 @@
 # Architecture and ownership
 
+## Planned evolution: purpose, composition and owned execution
+
+The [roadmap](roadmap.md) records the user's subsequent direction. Document each
+layer as why -> how -> what; use project purpose, requirements, candidate identity
+and evidence needs to select focused domain tasks. Shared task/evidence contracts
+do not require identical image and CAD validators or a universal workflow engine.
+
+Planned Workbench ownership expands to a narrow MCP interface for its own
+playground operations, reusing the existing tools. This refines the previous
+no-own-MCP scope for future implementation; no Workbench MCP exists or is installed
+yet. The HTTP simulator host and external CAD/art/printer providers retain their
+current boundaries. The first tool contract and transport are still to be defined.
+
+Consistent-image production will be extracted from sticker production, with
+project-selected invariants and variation. Sticker outcome procedures retain their
+reusable format/preflight knowledge; the project owns actual requirements and
+approvals. Existing skills and safeguards remain in force until that extraction
+passes its own acceptance gates. These are planned changes, not delivered behavior.
+
 ## Workflow and skill composition
 
 [Decision 0003](decisions/0003-composable-skills.md) defines the next incremental

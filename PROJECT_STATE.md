@@ -1,7 +1,7 @@
 # Project state
 
 Updated: 2026-09-08. Active handoff:
-[composable skills pilot](docs/iterations/2026-09-08-composable-skills/HANDOFF.md).
+[roadmap compilation](docs/iterations/2026-09-08-roadmap/HANDOFF.md).
 Use [NEXT_AGENT.md](NEXT_AGENT.md) as the fresh-session entrypoint.
 
 ## Delivered
@@ -30,6 +30,14 @@ skills are discoverable. The existing user daemon on localhost4179 remains healt
 and has optional private Tailscale Serve8454. User confirmed phone access.
 
 ## Current gate and next action
+
+Latest request compiles the accepted discussion into [the roadmap](docs/roadmap.md):
+why -> how -> what, focused context-selected tasks, planned owned playground MCP,
+consistent-image production and preserved CAD milestones. This is documentation,
+not implementation of those new capabilities. The next step remains authorized
+PR delivery of local work, followed by separately scoped installed/live acceptance.
+See the active roadmap brief and handoff; do not execute all future milestones
+under the roadmap-writing request.
 
 Current user-directed work supersedes the earlier next-action ordering below:
 [decision 0003](docs/decisions/0003-composable-skills.md) and the local step 2 pilot
