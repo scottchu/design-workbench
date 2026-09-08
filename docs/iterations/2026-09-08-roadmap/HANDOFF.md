@@ -1,5 +1,23 @@
 # Roadmap compilation handoff
 
+## Subsequent repository rename
+
+User authorized `design-workbench` and explicitly required local folder names to
+remain unchanged. Executed `gh repo rename design-workbench --repo
+scottchu/CAD-workbench --yes` and `git remote set-url origin
+git@github.com:scottchu/design-workbench.git` from the development worktree.
+GitHub readback confirms `scottchu/design-workbench`, unchanged repository ID
+`1359625520` / node ID `R_kgDOUQo9MA`, private visibility and default branch main.
+`git ls-remote origin refs/heads/main` remains
+`d92816a47f71de5adc8130f468f07500f1079318` before/after. `git worktree list` confirms
+both original directory paths unchanged. Runtime binding SHA-256 remains
+`ebc0145e394acad27f76e5bde868e179c07ff5307adfeb28a66132e4b3e8afec` before/after.
+No service operation, plugin rename/install, source push or PR creation occurred.
+Existing technical identifiers and historical names remain compatibility context;
+broader branding/package changes are separate work.
+
+## Roadmap source handoff
+
 Base: `6466d15`, local branch `codex/composable-skills`, development root
 `/Users/scottchu/Projects/personal/CAD-workbench-next`.
 

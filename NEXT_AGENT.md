@@ -1,5 +1,10 @@
 # Start here: CAD Workbench
 
+Repository name update, 2026-09-08: GitHub is now
+`scottchu/design-workbench`; shared `origin` points to that repository. The user
+explicitly requested keeping local folder names unchanged. Runtime roots, plugin
+IDs and bindings retain their existing names. See the active handoff for evidence.
+
 Continue from this repository's current records. Do not reconstruct the old chat or
 repeat the completed migration/install audit unless new evidence identifies a
 specific discrepancy. Read AGENTS.md, README.md, PROJECT_STATE.md and

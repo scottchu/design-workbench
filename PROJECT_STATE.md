@@ -1,5 +1,11 @@
 # Project state
 
+Repository identity update, 2026-09-08: GitHub renamed to
+`scottchu/design-workbench` to reflect CAD, image and future design domains.
+Local `origin` updated; repository ID, main commit, privacy, local folders and
+runtime binding are unchanged. This does not rename the installed plugin or
+publish the pending local source commits.
+
 Updated: 2026-09-08. Active handoff:
 [roadmap compilation](docs/iterations/2026-09-08-roadmap/HANDOFF.md).
 Use [NEXT_AGENT.md](NEXT_AGENT.md) as the fresh-session entrypoint.
