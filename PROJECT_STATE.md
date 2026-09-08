@@ -1,30 +1,54 @@
 # Project state
 
-Updated: 2026-09-08. Active iteration: [plugin installation](docs/iterations/2026-09-08-plugin-install/BRIEF.md), installed/enabled after independent migration-completeness review and additive policy repair; cache and runtime checks pass, fresh-conversation invocation remains to be observed. Previous migration and local simulator delivery remain in open PRs; no merge.
-Working branch: `codex/workflow-ownership`, from `e336afc34bd2fa1709dd1760b5990d4bf3cf0fba`. Private GitHub repository: [scottchu/CAD-workbench](https://github.com/scottchu/CAD-workbench). The completed foundation remains on upstream default `setup/foundation`; no `main` branch is assumed.
+Updated: 2026-09-08. Active handoff:
+[main cutover and new worktree](docs/iterations/2026-09-08-main-handoff/HANDOFF.md).
+Use [NEXT_AGENT.md](NEXT_AGENT.md) as the fresh-session entrypoint.
 
-## Current implementation
+## Delivered
 
-The foundation includes a root uv workspace, root npm workspace, pinned asdf tools, environment diagnostics, a real cadgen STEP fixture and focused software checks. The reusable catalog, two recipes and three skills are present. CAD Workbench plugin `0.2.0+codex.20260908111035` is installed/enabled in the personal marketplace. It binds the existing managed SvelteKit server through the user-local runtime record. Printer/slicer services remain external.
+CAD Workbench owns the reusable CAD/sticker workflow plugin and one local
+SvelteKit simulator host. Project repositories retain source, simulation logic,
+assets and evidence. Printer/slicer MCP, API, dashboard and widgets remain with
+external providers; text-to-CAD remains separately maintained.
 
-asdf manages Node.js 26.7.0, Bun 1.4.0 and uv 0.12.5. uv manages CPython 3.12.13 and the sole root `.venv`. npm is the JavaScript package manager; Bun is available but unused by the foundation.
+Workbench PR1 merged into main at `3ed377ed98e18d9945b854043ffb27b4c8c851b8`;
+main is now the default branch. Design-projects PR23 merged at
+`cf8ec46cffc24d8beb26d3908bb6023843824f1f`; sticker-projects PR1 merged at
+`cd20668470811e744a09d7ffa485f39cd0883a71`. Both consumers select Workbench
+`1d7f4fcd65e04136bb6bad24e90015ca36d97f2f` and policy manifest
+`b95f77ef16d317366d1c93f7ff76dee92c0e69976ce55facec10512e23b6c3cf`.
 
-Foundation validation and independent review passed. Existing-host setup, environment diagnostics, five focused software tests, actual STEP generation/readback, centered through-hole checks, snapshot generation/visual inspection and three explicit failure-receipt paths passed. No source repairs were required. Consult the [validation](docs/iterations/2026-09-06-foundation/VALIDATION.md), [review](docs/iterations/2026-09-06-foundation/REVIEW.md) and [handoff](docs/iterations/2026-09-06-foundation/HANDOFF.md) for the exact evidence and its limits. This was not a clean-machine installation test.
+Migration inventory and recovery passed independent validation. All 40 baseline
+shared files were accounted for, 20 other root paths classified, and missing
+simulation/branch guidance reconciled with independent review. See
+[completeness evidence](docs/iterations/2026-09-08-plugin-install/RECONCILIATION.md).
+No unrelated canonical project WIP was promoted into main.
 
-## Boundaries and next action
+Plugin `cad-workbench@personal`, version `0.2.0+codex.20260908111035`, is installed
+and enabled; all 67 packaged source files matched the reviewed package. Three
+skills are discoverable. The existing user daemon on localhost4179 remains healthy
+and has optional private Tailscale Serve8454. User confirmed phone access.
 
-Actual designs remain in their existing repositories. No Orca or OpenSCAD editor source was migrated, and no printer or service operation is part of this iteration. The later user-authorized publication created the private GitHub remote and pushed the foundation branch. Generated smoke files under `.workbench/` are reproducible developer evidence, not print-ready deliverables.
+## Current gate and next action
 
-The user has prioritized reusable workflow ownership and project separation before Laifen UI work. Workbench will own the catalog, recipes, contracts, reusable skills/policy/templates and legacy tool source; design and sticker repositories retain project source, assets and evidence with explicit external workflow bindings. The separate workflow-library draft is superseded as an ownership proposal and retained recoverably. Migration V1/V2 preservation checks and R1 review passed for provider `36f4171`, source `b8b0f5d` and sticker `33fcac4`. Source continuity retains one independently confirmed preexisting Laifen missing-VALIDATION failure (10 pass, 1 fail). Follow the active [handoff](docs/iterations/2026-09-07-workflow-ownership/HANDOFF.md) for exact identities, new plugin/simulator acceptance and delivery. Serving the existing Laifen customizer does not complete the separate roadmap milestone 1 measurement/build-identity contract.
+Gate: actual invocation of the installed skill in a new conversation. Next: resolve
+the existing runtime binding and open Laifen through workbench-flow, reusing the
+current server. User decision needed: none for this bounded check. The separate
+roadmap milestone 1 measurement/build-identity contract is still incomplete;
+serving the existing customizer does not complete it. The canonical ordered
+software roadmap remains [docs/roadmap.md](docs/roadmap.md).
 
-Plugin/simulator V3 and R2 passed after isolating unavailable registrations: package tests 5 pass, simulator tests 8 pass, Svelte check zero errors/warnings and production build pass. Root browser generation, changed-height rebuild and two STL downloads/readback passed; see [browser acceptance](docs/iterations/2026-09-07-workflow-ownership/ROOT_BROWSER_ACCEPTANCE.md). Only Laifen is registered currently.
+New development worktree: `/Users/scottchu/Projects/personal/CAD-workbench-next`.
+Preserve the live runtime root `/Users/scottchu/.codex/worktrees/7e46/CAD-workbench`
+until a separately planned relocation; the new checkout must not adopt it.
 
-Delivery: [Workbench PR 1](https://github.com/scottchu/CAD-workbench/pull/1), [design PR 23](https://github.com/scottchu/design-projects/pull/23), [sticker PR 1](https://github.com/scottchu/sticker-projects/pull/1). Workbench implementation commit is `91f96fd`; subsequent continuity-only delivery records do not alter the reviewed package or app.
+## Evidence and limits
 
-Current follow-up: [managed simulator service](docs/iterations/2026-09-07-simulator-service/BRIEF.md). User authorized a local daemon/lazy launcher and optional private Tailscale Serve on a selected port. Local setup/acceptance passed: the production server is managed by a user LaunchAgent on127.0.0.1:4179, with optional private HTTPS8454. See that iteration's HANDOFF, VALIDATION, REVIEW and PACKAGE records. Prior no-service-setup statements describe the earlier migration only.
-
-Installed plugin evidence and next-conversation pickup: [installation handoff](docs/iterations/2026-09-08-plugin-install/HANDOFF.md). The three original skills are discoverable here; invocation of the updated package in a new conversation remains unobserved. Existing server process, private endpoint and separate CAD/U1 providers remain unchanged.
-
-Phone access: user-confirmed PASS on 2026-09-08 ("It works on phone"). See the simulator-service VALIDATION addendum. Detailed mobile parameter/export and reboot checks were not reported. The installed Workbench skills have also appeared in this conversation's available-skill catalog; this is discovery evidence, not a complete recipe invocation.
-
-Migration completeness: all 40 baseline reusable files are accounted for; the other 20 non-project paths have explicit retention classifications. Full-simulation and divergent-branch generic policy gaps were repaired and independently reviewed. See [reconciliation](docs/iterations/2026-09-08-plugin-install/RECONCILIATION.md). Consumer pins still select the earlier accepted provider; open-PR merge and canonical-worktree cutover remain pending.
+Current delivery checks: 29 Python tests, 11 simulator tests and zero-error/warning
+Svelte check; sticker14 tests pass. Consumer provider hashes pass. Design root
+checks retain one independently confirmed preexisting missing Laifen VALIDATION.md
+failure (10 pass, one fail). Prior actual STEP readback and two browser-generated
+STL readbacks remain recorded in their original iterations; no new CAD or printer
+operation occurred during cutover. Full recipe execution, mobile parameter/export
+coverage, reboot and physical acceptance remain unverified. Dependency audit
+limitations and preserved project/recovery identities are linked in the handoff.
