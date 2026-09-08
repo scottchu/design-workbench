@@ -3,8 +3,8 @@
 Repository identity update, 2026-09-08: GitHub renamed to
 `scottchu/design-workbench` to reflect CAD, image and future design domains.
 Local `origin` updated; repository ID, main commit, privacy, local folders and
-runtime binding are unchanged. This does not rename the installed plugin or
-publish the pending local source commits.
+runtime binding are unchanged. The installed plugin keeps its existing identity.
+Subsequent authorized source delivery is open as [PR4](https://github.com/scottchu/design-workbench/pull/4); it is not merged.
 
 Updated: 2026-09-08. Active handoff:
 [roadmap compilation](docs/iterations/2026-09-08-roadmap/HANDOFF.md).
@@ -40,8 +40,8 @@ and has optional private Tailscale Serve8454. User confirmed phone access.
 Latest request compiles the accepted discussion into [the roadmap](docs/roadmap.md):
 why -> how -> what, focused context-selected tasks, planned owned playground MCP,
 consistent-image production and preserved CAD milestones. This is documentation,
-not implementation of those new capabilities. The next step remains authorized
-PR delivery of local work, followed by separately scoped installed/live acceptance.
+not implementation of those new capabilities. The local work is now pushed in [PR4](https://github.com/scottchu/design-workbench/pull/4).
+Next is PR review/merge, followed by separately scoped installed/live acceptance.
 See the active roadmap brief and handoff; do not execute all future milestones
 under the roadmap-writing request.
 
@@ -52,10 +52,9 @@ simulator-server and simulator-page; workbench-flow routes to those task owners.
 The candidate package passed local readback and focused checks; see
 [validation](docs/iterations/2026-09-08-composable-skills/VALIDATION.md) and
 [independent review](docs/iterations/2026-09-08-composable-skills/REVIEW.md).
-The installed three-skill plugin and runtime are unchanged. No remote delivery or
-consumer repinning occurred. Next: deliver this reviewed source through the PR
-route once remote push is authorized, then separately scope installed-skill/live
-invocation acceptance. Sticker splitting remains deferred until the playground
+The installed three-skill plugin and runtime are unchanged. The branch is pushed
+and PR4 is open; no consumer repinning or merge occurred. Next: review/merge PR4,
+then separately scope installed-skill/live invocation acceptance. Sticker splitting remains deferred until the playground
 pilot is accepted. The historical fresh-session invocation gate remains pending.
 
 Earlier gate: actual invocation of the installed skill in a new conversation. Resolve

@@ -54,8 +54,8 @@ recorded in
 Steps 1 and 2 record the architecture decision and extract simulator-server and
 simulator-page in local source. The five-skill candidate is verified but is not the
 installed three-skill plugin. Read active VALIDATION.md and REVIEW.md before
-continuing. Next is PR delivery after authorization for remote push, followed by
-separately scoped installed/live acceptance; do not reinstall or operate the server
+continuing. [PR4](https://github.com/scottchu/design-workbench/pull/4) is now open with the
+branch pushed. Next is review/merge followed by separately scoped installed/live acceptance; do not reinstall or operate the server
 as incidental delivery. Sticker splitting remains deferred. Communicate in Chinese.
 The previous fresh-session invocation/server-reuse check remains pending, separate
 from source-package acceptance and measured-build acceptance. Preserve confirmed

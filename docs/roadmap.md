@@ -41,7 +41,7 @@ and the exact source/package identities. No date-based completion promises.
 | Area | Recorded state as of 2026-09-08 |
 | --- | --- |
 | Foundation, ownership extraction and host relocation | Delivered in main through `d92816a`; historical evidence linked by current state. |
-| Focused playground skills | Local commit `6466d15` adds simulator-server and simulator-page; five-skill package and isolated page operations verified. Not pushed, installed or live-invocation accepted. |
+| Focused playground skills | Local commit `6466d15` adds simulator-server and simulator-page; five-skill package and isolated page operations verified. Submitted in PR4; not installed or live-invocation accepted. |
 | Installed plugin | Existing three-skill package; unchanged by the local extraction. |
 | Workbench MCP | Planned; no Workbench MCP server implemented or registered. The current SvelteKit host is an HTTP service, not MCP. |
 | Consistent-image workflow | Planned extraction from sticker production; current G0-G3 safeguards remain authoritative. |
@@ -181,9 +181,10 @@ general lesson into workflow or tools.
    and may proceed for a specific operation without waiting for all of R4.
 4. Continue CAD milestones 2-6 below with their original observable gates.
 
-The single next action is **prepare the reviewed local source for authorized PR
-delivery**. Remote push/PR, installed-plugin changes and live acceptance remain
-separate from this roadmap-writing request. The next implementation brief after R1
+The reviewed local source is now submitted as
+[PR4](https://github.com/scottchu/design-workbench/pull/4). The single next action is
+**review/merge PR4**. Installed-plugin changes and live acceptance remain
+separate from source PR delivery. The next implementation brief after R1
 should freeze the read-only R2 tool contract before adding mutation operations.
 
 ## Preserved CAD roadmap and acceptance gates

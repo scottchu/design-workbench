@@ -1,5 +1,15 @@
 # Roadmap compilation handoff
 
+## Authorized PR delivery
+
+After the user authorized proceeding, pushed `codex/composable-skills` and opened
+[PR4](https://github.com/scottchu/design-workbench/pull/4) against main. Original
+pushed tip was `9f15fee`; the follow-up documentation commit records this delivery.
+Before push, actual package readback and all 70 current source/output identities
+matched validated candidate 2; `scripts/check_registry.py` and diff whitespace
+checks passed. Historical local tests and independent reviews remain applicable.
+The PR is open, not merged. No plugin installation or live runtime operation ran.
+
 ## Subsequent repository rename
 
 User authorized `design-workbench` and explicitly required local folder names to
@@ -32,13 +42,12 @@ prerequisite: return to actual Laifen milestone 1 and a separate image pilot, th
 generalize from their evidence. Sticker-specific output rules remain reusable;
 project design requirements and approval remain project-owned.
 
-The earlier skill extraction at 6466d15 remains locally validated and unpushed.
+The earlier skill extraction at 6466d15 remains locally validated and is now in PR4.
 Installed plugin still has three skills; no MCP, consistent-image skill or generic
 image validator was implemented here. Runtime remains in canonical main at
 `/Users/scottchu/Projects/personal/CAD-workbench` with its existing binding.
 
-Next: review this roadmap and deliver local source through the PR route after
-remote authorization. Installation/live pilot acceptance is separate; the later
+Next: review/merge PR4. Installation/live pilot acceptance is separate; the later
 R2 implementation begins by defining a bounded read-only MCP contract. Do not
 execute the whole roadmap as implicit authority from this documentation request.
 

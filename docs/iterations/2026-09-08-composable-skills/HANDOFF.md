@@ -2,7 +2,8 @@
 
 Base: `d92816a`; local development branch: `codex/composable-skills` in
 `/Users/scottchu/Projects/personal/CAD-workbench-next`. Canonical main remains
-unchanged and owns the installed simulator. No remote delivery performed.
+unchanged and owns the installed simulator. Subsequent authorized delivery is
+[PR4](https://github.com/scottchu/design-workbench/pull/4), open and not merged.
 
 Step 1 recorded decision 0003's project/workflow/skill/tool responsibilities,
 Markdown composition, and two-skill playground pilot. Step 2 implements that
@@ -24,7 +25,7 @@ registry metadata availability is not full asset readback, and status uses the
 existing absolute interpreter without environment sync while allowing the
 controller's local lifecycle lock. Both are reflected in the final skill source.
 
-Next bounded delivery: push/open a PR only after remote authorization under AGENTS.
+Next bounded delivery: review/merge the now-open PR4.
 No installed-plugin update, live server reuse, browser behavior or measured-build
 acceptance is claimed. A future installation needs a distinct release identity;
 the current package retains the existing manifest version as an unreleased source
