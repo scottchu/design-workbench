@@ -19,19 +19,23 @@ The plugin `cad-workbench@personal` is installed/enabled at
 repairs passed independent review. The local simulator works; the user confirmed
 phone access. Do not reinstall plugins or redo repository separation as setup.
 
-## Live runtime: preserve its original worktree
+## Live runtime: canonical main checkout
 
-`~/.config/cad-workbench/runtime.json` still binds
-`/Users/scottchu/.codex/worktrees/7e46/CAD-workbench`, instance
-`ca3daa81c9c60ef20aa7f16b`. That old worktree is the installed daemon's owner and
-must remain intact. The fresh development worktree is not a replacement runtime.
-Do not install a second service, change its binding, remove the old worktree or
-move its private registry/builds as incidental cleanup. Read the installed skill's
-local-server reference and use the bound root/interpreter for status/ensure/open.
+The user explicitly requested relocation after the initial handoff. The old 7e46
+instance was uninstalled and replaced by the service rooted at
+`/Users/scottchu/Projects/personal/CAD-workbench`, checked out on `main`.
+`~/.config/cad-workbench/runtime.json` now binds that canonical root and instance
+`21834b4148066f30e0379325`. Use its absolute `.venv/bin/python` and working directory
+for service operations. This development worktree is not the service root.
 
-Local URL: http://127.0.0.1:4179/ . Optional private access:
-https://mac-mini.duckbill-ionian.ts.net:8454/ . This is Tailscale Serve, not public
-Funnel. Existing other services are separate.
+Local URL: http://127.0.0.1:4179/ . Private access remains
+https://mac-mini.duckbill-ionian.ts.net:8454/ . Local/private health, Laifen routes
+and the private served WASM hash passed. Login persistence is installed. No
+Tailscale configuration changed. The old 7e46 worktree is no longer a runtime
+dependency; it remains on disk pending optional separate cleanup.
+
+See [relocation evidence](docs/iterations/2026-09-08-main-handoff/RUNTIME_RELOCATION.md).
+Earlier handoff instructions to preserve 7e46 as the live runtime are superseded.
 
 ## Next bounded action
 

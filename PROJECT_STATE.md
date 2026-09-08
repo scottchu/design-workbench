@@ -39,8 +39,10 @@ serving the existing customizer does not complete it. The canonical ordered
 software roadmap remains [docs/roadmap.md](docs/roadmap.md).
 
 New development worktree: `/Users/scottchu/Projects/personal/CAD-workbench-next`.
-Preserve the live runtime root `/Users/scottchu/.codex/worktrees/7e46/CAD-workbench`
-until a separately planned relocation; the new checkout must not adopt it.
+The runtime was explicitly relocated to the canonical main checkout
+`/Users/scottchu/Projects/personal/CAD-workbench`; its binding selects instance
+`21834b4148066f30e0379325`. The old 7e46 service is uninstalled. See
+[relocation evidence](docs/iterations/2026-09-08-main-handoff/RUNTIME_RELOCATION.md).
 
 ## Evidence and limits
 
