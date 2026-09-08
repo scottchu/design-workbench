@@ -41,7 +41,7 @@ and the exact source/package identities. No date-based completion promises.
 | Area | Recorded state as of 2026-09-08 |
 | --- | --- |
 | Foundation, ownership extraction and host relocation | Delivered in main through `d92816a`; historical evidence linked by current state. |
-| Focused playground skills | Local commit `6466d15` adds simulator-server and simulator-page; five-skill package and isolated page operations verified. Submitted in PR4; not installed or live-invocation accepted. |
+| Focused playground skills | Local commit `6466d15` adds simulator-server and simulator-page; five-skill package and isolated page operations verified. Merged in PR4; running host refreshed and HTTP/assets verified. Five-skill installation and fresh-session acceptance remain pending. |
 | Installed plugin | Existing three-skill package; unchanged by the local extraction. |
 | Workbench MCP | Planned; no Workbench MCP server implemented or registered. The current SvelteKit host is an HTTP service, not MCP. |
 | Consistent-image workflow | Planned extraction from sticker production; current G0-G3 safeguards remain authoritative. |
@@ -181,10 +181,12 @@ general lesson into workflow or tools.
    and may proceed for a specific operation without waiting for all of R4.
 4. Continue CAD milestones 2-6 below with their original observable gates.
 
-The reviewed local source is now submitted as
-[PR4](https://github.com/scottchu/design-workbench/pull/4). The single next action is
-**review/merge PR4**. Installed-plugin changes and live acceptance remain
-separate from source PR delivery. The next implementation brief after R1
+[PR4](https://github.com/scottchu/design-workbench/pull/4) is merged and the running
+Playground has been refreshed. Five-skill installation was explicitly excluded;
+its R1 acceptance remains pending. Resolve the active next action from
+[PROJECT_STATE.md](../PROJECT_STATE.md), rather than keeping a second live task
+list here. Installed-plugin changes remain separately scoped.
+The next implementation brief after R1
 should freeze the read-only R2 tool contract before adding mutation operations.
 
 ## Preserved CAD roadmap and acceptance gates
