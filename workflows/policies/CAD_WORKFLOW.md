@@ -64,6 +64,12 @@ observe, and ask one explicit pass/fail question. Record the exact result. Once 
 relationship is accepted and the relevant inputs have not changed, do not ask for it
 again.
 
+For spatial designs, cover the coordinate frame, orientation, state topology, part
+identities and allowed motion in this intent gate. While an applicable gate remains
+unresolved, do not run downstream 3D CAD, export, slicing or printing in parallel.
+Use integrated/full simulation as an integration check after the applicable small
+relationship gates pass; it must not be the sole user-validation surface.
+
 This gate validates design intent and relationship understanding. An early appearance
 pass is not proof of dimensions, actual-solid geometry, exports, slicer behavior, or
 physical performance. Reference photos and families of examples remain reference
@@ -97,6 +103,11 @@ Classify each statement:
 | Physical unknown | Depends on print, material, heat, force, wear, or real hardware | Use a coupon or physical test; do not claim CAD proof |
 
 Give hard requirements stable IDs such as `REQ-01`. Each ID must map to automated evidence, a manual visual check, or an explicitly pending physical gate.
+
+For each bounded correction, record a per-object delta mask: which objects may
+change, the allowed transform or parameter changes, and all invariants and forbidden
+changes. A later narrower user instruction supersedes the earlier broader scope;
+refreeze the affected contract before continuing.
 
 For printed parts, consult [FDM design rules](FDM_DESIGN_RULES.md) and the
 project's `PRINTING_PROFILE.md` while forming this contract. Record load-relative
@@ -140,6 +151,13 @@ Useful targets include:
 - tolerance-stack calculations and clearance budgets.
 
 Use nominal and boundary values. Add pairwise parameter cases only when parameters interact. Exhaustive parameter grids are justified only when the domain is small and the invariant cannot be proven more directly.
+
+Before repeating a geometry, trajectory or coordinate-frame relationship, extract
+its reusable invariant into one deterministic pure-math function. All affected
+parts, rails and generators use that function. Check it independently with nominal
+and boundary inputs, determinism, applicable inverse/round-trip properties and
+caller equivalence. Keep BREP construction, tessellation and serialization outside
+that function and downstream of its analytic checks.
 
 ### 3. Constraint tests
 
@@ -201,6 +219,11 @@ Run gates in this order so cheap failures stop expensive work:
 
 Do not regenerate an entire project when only one explicit target changed.
 
+A failed cheap analytic or intent gate stops downstream BREP/CAD, exports, viewer
+delivery, slicing and printing. An explicitly authorized evidence-only experiment
+may investigate the failure, but label its output non-candidate and exclude it from
+delivery and acceptance claims.
+
 After risk-appropriate actual-geometry and output validation, distinct critique, and
 formal review, deliver trunk-bound work through the authorized pull-request route.
 Slicing, fabrication, and physical acceptance remain separate evidence layers. They
@@ -261,6 +284,12 @@ the loaded page or a snapshot, the general claim is limited to “the requested 
 rendered with no visible error state.” Any feature-specific visual claim must name the
 inspected features and views. Record endpoint readiness and visual observations
 separately, and never promote either to CAD, slicer, or physical acceptance.
+
+Before claiming that review media is visible, readable or usable for the user,
+validate it on the user's actual delivery surface. Local rendering, HTTP success,
+viewer readiness and agent inspection alone do not establish that user experience.
+Record user confirmation or direct delivery-surface evidence and limit the claim
+to the interaction actually checked.
 
 ### Defect regression
 

@@ -1,14 +1,26 @@
 # Installed Workbench plugin
 
-Status: installed and enabled through the existing personal marketplace. Independent
-runtime-binding instruction review passed. Delivery continues on Workbench PR1;
-no merge or provider installation occurred.
+Status: migration completeness repairs independently reviewed; updated plugin
+installed/enabled. Current version: `0.2.0+codex.20260908111035`.
+Maintained source: `/Users/scottchu/plugins/cad-workbench`; cache:
+`/Users/scottchu/.codex/plugins/cache/personal/cad-workbench/0.2.0+codex.20260908111035`.
+The personal marketplace and existing simulator binding are unchanged.
 
-Plugin ID: `cad-workbench@personal`; version:
-`0.2.0+codex.20260908102059`. Maintained install source:
-`/Users/scottchu/plugins/cad-workbench`. Installed cache:
-`/Users/scottchu/.codex/plugins/cache/personal/cad-workbench/0.2.0+codex.20260908102059`.
-Personal marketplace: `/Users/scottchu/.agents/plugins/marketplace.json`.
+See [completeness review](MIGRATION_COMPLETENESS_REVIEW.md) for the 40 migrated / 20
+retained baseline paths and additive divergent-branch policy audit, and
+[reconciliation evidence](RECONCILIATION.md) for the repair and installation checks.
+Both findings are resolved. This covers the audited baseline and divergent shared
+guidance, not every historical project lesson or every possible branch.
+
+Remaining: consumer bindings still select provider `36f4171`; the three migration
+PRs are open. Adoption/merge and canonical design-worktree cutover are not complete.
+A new conversation should exercise the updated skill; no full portable CAD-to-print
+execution has been certified. Preserve the bound runtime worktree until relocation.
+
+## Original installation record
+
+The following records the initial version `0.2.0+codex.20260908102059` and its receipt;
+the current update and receipt are in RECONCILIATION.md.
 
 ## Exact setup and checks
 

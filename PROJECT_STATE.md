@@ -1,11 +1,11 @@
 # Project state
 
-Updated: 2026-09-08. Active iteration: [plugin installation](docs/iterations/2026-09-08-plugin-install/BRIEF.md), installed/enabled with cache and bound-runtime verification complete; fresh-conversation invocation remains to be observed. Previous migration and local simulator delivery remain in open PRs; no merge.
+Updated: 2026-09-08. Active iteration: [plugin installation](docs/iterations/2026-09-08-plugin-install/BRIEF.md), installed/enabled after independent migration-completeness review and additive policy repair; cache and runtime checks pass, fresh-conversation invocation remains to be observed. Previous migration and local simulator delivery remain in open PRs; no merge.
 Working branch: `codex/workflow-ownership`, from `e336afc34bd2fa1709dd1760b5990d4bf3cf0fba`. Private GitHub repository: [scottchu/CAD-workbench](https://github.com/scottchu/CAD-workbench). The completed foundation remains on upstream default `setup/foundation`; no `main` branch is assumed.
 
 ## Current implementation
 
-The foundation includes a root uv workspace, root npm workspace, pinned asdf tools, environment diagnostics, a real cadgen STEP fixture and focused software checks. The reusable catalog, two recipes and three skills are present. CAD Workbench plugin `0.2.0+codex.20260908102059` is installed/enabled in the personal marketplace. It binds the existing managed SvelteKit server through the user-local runtime record. Printer/slicer services remain external.
+The foundation includes a root uv workspace, root npm workspace, pinned asdf tools, environment diagnostics, a real cadgen STEP fixture and focused software checks. The reusable catalog, two recipes and three skills are present. CAD Workbench plugin `0.2.0+codex.20260908111035` is installed/enabled in the personal marketplace. It binds the existing managed SvelteKit server through the user-local runtime record. Printer/slicer services remain external.
 
 asdf manages Node.js 26.7.0, Bun 1.4.0 and uv 0.12.5. uv manages CPython 3.12.13 and the sole root `.venv`. npm is the JavaScript package manager; Bun is available but unused by the foundation.
 
@@ -23,6 +23,8 @@ Delivery: [Workbench PR 1](https://github.com/scottchu/CAD-workbench/pull/1), [d
 
 Current follow-up: [managed simulator service](docs/iterations/2026-09-07-simulator-service/BRIEF.md). User authorized a local daemon/lazy launcher and optional private Tailscale Serve on a selected port. Local setup/acceptance passed: the production server is managed by a user LaunchAgent on127.0.0.1:4179, with optional private HTTPS8454. See that iteration's HANDOFF, VALIDATION, REVIEW and PACKAGE records. Prior no-service-setup statements describe the earlier migration only.
 
-Installed plugin evidence and next-conversation pickup: [installation handoff](docs/iterations/2026-09-08-plugin-install/HANDOFF.md). The current conversation cannot certify fresh-session skill discovery. Existing server process, private endpoint and separate CAD/U1 providers remain unchanged.
+Installed plugin evidence and next-conversation pickup: [installation handoff](docs/iterations/2026-09-08-plugin-install/HANDOFF.md). The three original skills are discoverable here; invocation of the updated package in a new conversation remains unobserved. Existing server process, private endpoint and separate CAD/U1 providers remain unchanged.
 
 Phone access: user-confirmed PASS on 2026-09-08 ("It works on phone"). See the simulator-service VALIDATION addendum. Detailed mobile parameter/export and reboot checks were not reported. The installed Workbench skills have also appeared in this conversation's available-skill catalog; this is discovery evidence, not a complete recipe invocation.
+
+Migration completeness: all 40 baseline reusable files are accounted for; the other 20 non-project paths have explicit retention classifications. Full-simulation and divergent-branch generic policy gaps were repaired and independently reviewed. See [reconciliation](docs/iterations/2026-09-08-plugin-install/RECONCILIATION.md). Consumer pins still select the earlier accepted provider; open-PR merge and canonical-worktree cutover remain pending.

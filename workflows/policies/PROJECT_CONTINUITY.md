@@ -124,6 +124,12 @@ and the next action in the active iteration records. User-facing progress update
 surface the same concise current gate and roadmap state without reproducing task DAGs
 or agent diaries.
 
+Keep exactly one current contract, candidate fingerprint and matching
+source-artifact-independent-review chain in the active iteration. Mark older
+revisions and their receipts superseded or archived; never mix them into the
+current candidate's acceptance evidence. Reuse the existing manifests and records
+rather than introducing a second authority.
+
 These documents evolve during an active iteration. Once the iteration closes, correct factual errors with an explicit correction note; do not rewrite the historical reasoning to look cleaner than it was.
 
 Preserve closed iterations and superseded decisions as history, and point clearly to

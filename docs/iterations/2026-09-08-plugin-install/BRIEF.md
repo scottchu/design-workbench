@@ -17,3 +17,14 @@ Acceptance: plugin CLI installed/enabled, cached file parity, three discoverable
 skills, bound service status/ensure using its original root with same process,
 unchanged private HTTPS service. A new conversation is required for Codex to pick
 up new skills; this existing conversation cannot certify fresh-session invocation.
+
+## Migration completeness follow-up
+
+The user requests a workflow completeness audit before continuing installation.
+Compare the frozen extraction inventory and root semantics, plus the canonical
+design checkout's divergent shared guidance. Reconcile missing additive policy
+without overwriting newer Workbench rules or touching design-project WIP. Preserve
+the original extraction receipt as historical evidence. Independently review the
+policy repair, refresh the policy checksums, package and reinstall through the
+existing personal marketplace, and verify cached bytes and enabled state. Consumer
+pins and open migration PRs remain explicit cutover work; no merge is authorized.
