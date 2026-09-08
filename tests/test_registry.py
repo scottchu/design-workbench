@@ -18,9 +18,9 @@ class RegistryTests(unittest.TestCase):
             shutil.copytree(ROOT/folder,self.root/folder,dirs_exist_ok=True)
         shutil.copy2(ROOT/'README.md',self.root/'README.md')
         for name in ('SERVICE.md', 'README.md'):
-            target = self.root/'apps/simulator'/name
+            target = self.root/'apps/playground'/name
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(ROOT/'apps/simulator'/name, target)
+            shutil.copy2(ROOT/'apps/playground'/name, target)
     def test_clean(self):self.assertEqual(module.check(self.root),[])
     def test_policy_tamper(self):
         p=self.root/'workflows/cad-fabrication.md';p.write_text(p.read_text()+'\nchanged\n')

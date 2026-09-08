@@ -19,7 +19,7 @@ interactive review; source packaging alone does not build/start it. From the
 bound durable runtime root, follow `skills/simulator-server/SKILL.md`
 and its runtime reference; plugin cache location is not runtime ownership. Use
 `skills/simulator-page/SKILL.md` for project registrations and pages.
-Read the runtime's `apps/simulator/SERVICE.md` before operations. Observation-only
+Read the runtime's `apps/playground/SERVICE.md` before operations. Observation-only
 routes that need no simulator do not start it. Tailscale is an optional explicitly
 configured private-access addon; no Funnel or public endpoint is provided.
 

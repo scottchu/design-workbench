@@ -6,7 +6,7 @@ Workbench also owns the shared [capability catalog](catalog/CAPABILITIES.md), [s
 
 Check this catalog locally with `uv run python scripts/check_registry.py`. Its current extraction and acceptance status is recorded in [workflow ownership](docs/iterations/2026-09-07-workflow-ownership/HANDOFF.md). Preserved [legacy Viewer controller source](tools/cad-viewer-service/README.md) retains its original host dependencies; this extraction does not install or operate that service.
 
-The foundation supplies a reproducible environment, diagnostics and a real CAD generation/export check. The [workflow plugin](packaging/README.md) now packages five skills and their shared contracts. The [local simulator host](apps/simulator/README.md) serves explicitly registered external builds; Laifen OpenSCAD WASM is the first integration. A general CAD editor and end-to-end fabrication acceptance remain future work.
+The foundation supplies a reproducible environment, diagnostics and a real CAD generation/export check. The [workflow plugin](packaging/README.md) now packages five skills and their shared contracts. The [local project playground](apps/playground/README.md) serves explicitly registered external builds; Laifen OpenSCAD WASM is the first integration. A general CAD editor and end-to-end fabrication acceptance remain future work.
 
 ## Local setup
 
@@ -21,7 +21,7 @@ uv run python scripts/cad_smoke.py
 uv run python -m unittest discover -s tests -v
 ```
 
-The root uv workspace pins `cadgen[snapshot]==0.5.0` and uses the root `.venv`. Keeping the already selected uv-managed Python avoids a second Python installation; asdf owns Node.js, Bun and uv. The root npm workspace includes `apps/simulator`. After building and registering an external simulator, run `uv run python scripts/simulator_service.py open` to start or reuse the local production server and open http://127.0.0.1:4179/. The [service guide](apps/simulator/SERVICE.md) covers login persistence and optional private Tailscale access. `npm run dev:simulator` remains the development command. Local use needs no Tailscale. Node.js is also relevant to upstream mesh/DXF builders. Bun is available but is not a second package manager: the foundation uses npm and has no Bun lockfile. Setup does not change global toolchain configuration.
+The root uv workspace pins `cadgen[snapshot]==0.5.0` and uses the root `.venv`. Keeping the already selected uv-managed Python avoids a second Python installation; asdf owns Node.js, Bun and uv. The root npm workspace includes `apps/playground`. After building and registering an external simulator, run `uv run python scripts/simulator_service.py open` to start or reuse the local production server and open http://127.0.0.1:4179/. The [service guide](apps/playground/SERVICE.md) covers login persistence and optional private Tailscale access. `npm run dev:playground` remains the development command. Local use needs no Tailscale. Node.js is also relevant to upstream mesh/DXF builders. Bun is available but is not a second package manager: the foundation uses npm and has no Bun lockfile. Setup does not change global toolchain configuration.
 
 The smoke command builds a generic 20 x 12 x 6 mm plate with a centered 4 mm through-hole using cadgen. It reopens the written STEP and checks solid validity, solid count, bounding dimensions and material volume. It writes ignored `.workbench/smoke/plate.step` and `.workbench/smoke/receipt.json`, with `.workbench/smoke/plate.png` when a snapshot is requested. Its cache is isolated under `.workbench/cache`.
 

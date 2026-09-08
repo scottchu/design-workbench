@@ -7,7 +7,7 @@ runtime binding are unchanged. The installed plugin keeps its existing identity.
 Subsequent authorized source delivery is open as [PR4](https://github.com/scottchu/design-workbench/pull/4); it is not merged.
 
 Updated: 2026-09-08. Active handoff:
-[roadmap compilation](docs/iterations/2026-09-08-roadmap/HANDOFF.md).
+[playground source rename](docs/iterations/2026-09-08-playground-name/HANDOFF.md).
 Use [NEXT_AGENT.md](NEXT_AGENT.md) as the fresh-session entrypoint.
 
 ## Delivered
@@ -36,6 +36,13 @@ skills are discoverable. The existing user daemon on localhost4179 remains healt
 and has optional private Tailscale Serve8454. User confirmed phone access.
 
 ## Current gate and next action
+
+Latest follow-up renames application source to `apps/playground` and workspace
+`@design-workbench/playground`, keeping legacy npm aliases and service identity.
+Local build, 32 Python tests, 11 frontend tests and package readback passed; see
+the active validation/review. The controller can reuse verified same-root legacy
+build configurations; no live transition has been performed. This follows PR4
+and does not rename local root folders, install the plugin or alter consumer pins.
 
 Latest request compiles the accepted discussion into [the roadmap](docs/roadmap.md):
 why -> how -> what, focused context-selected tasks, planned owned playground MCP,

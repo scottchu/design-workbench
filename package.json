@@ -2,7 +2,7 @@
   "name": "cad-workbench",
   "version": "0.1.0",
   "private": true,
-  "description": "Reusable CAD workflows and local simulator host",
+  "description": "Reusable design workflows and local project playground",
   "workspaces": [
     "apps/*"
   ],
@@ -10,9 +10,13 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev:simulator": "npm run dev --workspace @cad-workbench/simulator",
-    "check:simulator": "npm run check --workspace @cad-workbench/simulator",
-    "build:simulator": "npm run build --workspace @cad-workbench/simulator",
-    "test:simulator": "npm run test --workspace @cad-workbench/simulator"
+    "dev:playground": "npm run dev --workspace @design-workbench/playground",
+    "check:playground": "npm run check --workspace @design-workbench/playground",
+    "build:playground": "npm run build --workspace @design-workbench/playground",
+    "test:playground": "npm run test --workspace @design-workbench/playground",
+    "dev:simulator": "npm run dev:playground",
+    "check:simulator": "npm run check:playground",
+    "build:simulator": "npm run build:playground",
+    "test:simulator": "npm run test:playground"
   }
 }

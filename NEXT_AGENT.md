@@ -45,8 +45,10 @@ Earlier handoff instructions to preserve 7e46 as the live runtime are superseded
 ## Next bounded action
 
 The latest user request compiled the discussion into [the roadmap](docs/roadmap.md).
-Read the [active roadmap handoff](docs/iterations/2026-09-08-roadmap/HANDOFF.md)
-first. It plans owned MCP and consistent-image capabilities without implementing
+Read the [active playground handoff](docs/iterations/2026-09-08-playground-name/HANDOFF.md)
+first, then the [roadmap handoff](docs/iterations/2026-09-08-roadmap/HANDOFF.md).
+The latest PR4 follow-up renames source to apps/playground while preserving runtime
+identity and legacy paths for verified reuse. Main runtime remains unchanged. It plans owned MCP and consistent-image capabilities without implementing
 them; the original CAD gates remain intact. The underlying skill separation is
 recorded in
 [decision 0003](docs/decisions/0003-composable-skills.md) and the

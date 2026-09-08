@@ -50,7 +50,7 @@ The existing host-specific CAD Viewer controller is preserved as legacy maintena
 
 asdf pins Node.js, Bun and uv in `.tool-versions`. uv manages CPython 3.12.13 from `.python-version` and the sole root environment that hosts the pinned cadgen runtime. This scoped Python choice preserves the already selected installation without adding another base interpreter. Bun is available; npm remains the JavaScript workspace package manager. A diagnostic script verifies the required environment. A separate smoke script builds one source fixture and measures the written STEP. Ignored artifacts carry a receipt describing their source, command, runtime and checks.
 
-The root npm workspace now owns `apps/simulator`, a dedicated SvelteKit host. It adds no generalized job manager or persistent viewer service. The original foundation remains a small CLI/runtime layer.
+The root npm workspace now owns `apps/playground`, a dedicated SvelteKit host. It adds no generalized job manager or persistent viewer service. The original foundation remains a small CLI/runtime layer.
 
 The Python runtime installation and agent skill/plugin installation are separate concerns. A future skill should explain when and how to use a small supported command; it should not be the only place where reproducibility, argument validation or artifact identity are enforced.
 

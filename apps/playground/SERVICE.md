@@ -1,4 +1,4 @@
-# Local simulator service
+# Local playground service
 
 This is a macOS user launchd service for the already-built adapter-node simulator,
 listening on `127.0.0.1:4179`. It runs neither Vite nor a printer/slicer proxy.
@@ -14,7 +14,7 @@ uv run python scripts/simulator_service.py stop
 `start` is an alias for `ensure`. `ensure` bootstraps only when absent and reuses
 only the exact owned launchd configuration with matching health identity. `open`
 first ensures that service is healthy, then opens its local URL. Dependencies and
-`apps/simulator/build/index.js` must already exist; run the repository's documented
+`apps/playground/build/index.js` must already exist; run the repository's documented
 npm setup/build separately. The CLI never installs dependencies or auto-builds.
 Node is resolved to an absolute executable using `asdf which node` in this root.
 
@@ -109,3 +109,18 @@ This file is machine-local setup, not part of a plugin package. An existing bind
 is preserved unless relocation is explicitly requested. A fresh plugin install
 can therefore reuse a healthy service without installing another runtime in its
 cache or changing launchd/Tailscale configuration.
+
+## Source-path compatibility
+
+New builds use `apps/playground/build/index.js`. The controller also recognizes
+an otherwise verified same-root legacy `apps/simulator/build/index.js` plist.
+Status/stop/uninstall retain exact ownership checks. Ensure/start/open preserve
+the saved entrypoint and do not migrate it, even when a new playground build is
+available. A missing saved build is an explicit failure, not a fallback to a
+different candidate. For a separately requested update, build playground first,
+then use explicit `install` to switch the owned service configuration.
+
+Keep legacy ignored build files until that update has been verified. Do not move
+or delete a live root. The service label, health identity, port, registry keys and
+user-local runtime binding retain their historical names for compatibility. The
+source rename does not update the installed plugin or active service.

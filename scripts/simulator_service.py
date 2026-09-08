@@ -20,6 +20,8 @@ from urllib.request import HTTPRedirectHandler, build_opener
 LABEL = 'com.scottchu.cad-workbench.simulator'
 URL = 'http://127.0.0.1:4179'
 ROOT = Path(__file__).resolve().parents[1]
+BUILD_ENTRY = 'apps/playground/build/index.js'
+LEGACY_BUILD_ENTRY = 'apps/simulator/build/index.js'
 
 class ServiceError(RuntimeError): pass
 class NoRedirect(HTTPRedirectHandler):
@@ -109,12 +111,17 @@ class Service:
         env=data.get('EnvironmentVariables',{})
         if (data.get('Label')!=LABEL or data.get('WorkingDirectory')!=str(self.root)
                 or env.get('WORKBENCH_INSTANCE_ID')!=self.instance
-                or data.get('ProgramArguments',[None,None])[1:]!=[str(self.root/'apps/simulator/build/index.js')]):
+                or data.get('ProgramArguments',[None,None])[1:] not in
+                   ([str(self.root/BUILD_ENTRY)], [str(self.root/LEGACY_BUILD_ENTRY)])):
             raise ServiceError(f'foreign plist ownership: {path}')
         return data
-    def desired(self,node,registry,allowed_origin=None):
-        entry=self.root/'apps/simulator/build/index.js'
-        if not entry.is_file():raise ServiceError('built server missing; run npm run build:simulator from Workbench root')
+    def desired(self,node,registry,allowed_origin=None,*,reuse=False):
+        # ensure/open preserve the verified saved entrypoint, including an old
+        # same-root simulator build. Explicit install selects the new build.
+        saved=self.saved_configuration() if reuse else None
+        entry=Path(saved['ProgramArguments'][1]) if saved else self.root/BUILD_ENTRY
+        if not entry.is_file():
+            raise ServiceError(f'built server missing: {entry}; build with npm run build:playground and use explicit install to change a saved entrypoint')
         node=Path(node)
         if not node.is_absolute() or not node.is_file() or not os.access(node,os.X_OK):raise ServiceError('node must be an absolute executable resolved by asdf')
         registry=Path(registry)
@@ -171,12 +178,15 @@ class Service:
         target=self.installed if installed else self.local
         self.write(target,data)
         self.command('bootstrap',self.domain,str(target));self.wait_ready();return self.status()
-    def saved_environment(self):
+    def saved_configuration(self):
         loaded=self.loaded()
-        if loaded:return loaded[1]['EnvironmentVariables']
+        if loaded:return loaded[1]
         for path in (self.installed,self.local):
-            if path.exists() or path.is_symlink():return self.owned_plist(path)['EnvironmentVariables']
-        return {}
+            if path.exists() or path.is_symlink():return self.owned_plist(path)
+        return None
+    def saved_environment(self):
+        saved=self.saved_configuration()
+        return saved['EnvironmentVariables'] if saved else {}
     def bootout(self):
         self.command('bootout',self.target)
         for _ in range(40):
@@ -227,7 +237,7 @@ def main():
                 saved=service.saved_environment()
                 registry=os.environ.get('WORKBENCH_SIMULATORS',saved.get('WORKBENCH_SIMULATORS',str(service.root/'.workbench/simulators.json')))
                 allowed=os.environ.get('WORKBENCH_ALLOWED_ORIGIN',saved.get('WORKBENCH_ALLOWED_ORIGIN'))
-                data=service.desired(found.stdout.strip(),registry,allowed)
+                data=service.desired(found.stdout.strip(),registry,allowed,reuse=args.action!='install')
                 result=service.install(data) if args.action=='install' else service.ensure(data)
                 if args.action=='open':subprocess.run(['/usr/bin/open',URL],check=True,timeout=10)
             print(json.dumps(result,indent=2));return 0

@@ -34,7 +34,7 @@ test('CLI adds healthy C without rewriting stale A or blocking healthy B', async
   a.raw.simulators.push(b.sim);a.raw.allowedRoots.push(b.assets);await a.save();
   await writeFile(path.join(a.root,'source.scad'),'changed');
   const repo=path.resolve(import.meta.dirname,'../../..');
-  const result=execFileSync(process.execPath,[path.join(repo,'apps/simulator/scripts/register.mjs'),'--id','added','--title','Added','--asset-root',c.assets,'--source-root',repo,'--source-entry','apps/simulator/src/app.html','--config',a.config],{encoding:'utf8'});
+  const result=execFileSync(process.execPath,[path.join(repo,'apps/playground/scripts/register.mjs'),'--id','added','--title','Added','--asset-root',c.assets,'--source-root',repo,'--source-entry','apps/playground/src/app.html','--config',a.config],{encoding:'utf8'});
   assert.equal(JSON.parse(result).id,'added');
   const entries=await loadRegistry(a.config);assert.deepEqual(entries.map(s=>[s.id,s.available]),[['example',false],['healthy',true],['added',true]]);
   await assert.rejects(readAsset(entries[0],'index.html'),/unavailable/);

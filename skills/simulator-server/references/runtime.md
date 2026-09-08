@@ -5,8 +5,8 @@ bundled source, not a remotely hosted URL or an automatically installed process.
 Pure observation/preparation routes that need no simulator skip this dependency.
 
 Resolve the installed plugin/package root, then read its
-[service contract](../../../apps/simulator/SERVICE.md) and
-[registration instructions](../../../apps/simulator/README.md). Do not substitute
+[service contract](../../../apps/playground/SERVICE.md) and
+[registration instructions](../../../apps/playground/README.md). Do not substitute
 the external design repository as the service root. Project source and built
 simulator assets stay external and are selected by explicit local registration.
 
@@ -28,10 +28,15 @@ If the binding is absent, use an explicitly selected durable Workbench runtime
 root (the package can supply its source). Only for in-scope setup/ensure/open,
 prepare its pinned tools and sole
 root runtimes when missing, using `uv sync --locked --all-packages --all-groups`, `npm ci` and
-`npm run build:simulator`. These are setup steps, not evidence of CAD correctness.
+`npm run build:playground`. These are setup steps, not evidence of CAD correctness.
 No nested install, copied environment or untracked project assets belong in the
 package. Configuration and lifecycle state live under that runtime root's ignored `.workbench/`. Record a user-local binding only after its real status/health
 identity is verified. Never silently replace an existing binding.
+
+The installed runtime may predate the app source rename. Read its own service
+contract at `apps/playground/SERVICE.md`, or the legacy `apps/simulator/SERVICE.md`
+when that is the bound revision. Do not upgrade the runtime merely to match this
+skill's source paths. The controller filename and runtime binding remain stable.
 
 Use the packaged lifecycle instead of creating another dev-server process:
 
