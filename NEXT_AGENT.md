@@ -1,7 +1,7 @@
 # Start here: Design Workbench
 
 Read [AGENTS.md](AGENTS.md), [README.md](README.md),
-[PROJECT_STATE.md](PROJECT_STATE.md) and its linked active handoff. Use current
+[PROJECT_STATE.md](PROJECT_STATE.md). Follow its current specification and evidence links. Use current
 repository evidence; do not reconstruct old chat or repeat completed migration
 checks without a concrete discrepancy. Communicate in Chinese.
 

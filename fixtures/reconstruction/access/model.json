@@ -1,0 +1,73 @@
+{
+  "source": {"path": "docs/source/playground-access.md", "version": 1},
+  "method": "Manual agent interpretation followed by implementation; no Markdown parser, generic compiler, or proved categorical construction.",
+  "target": {"language": "JavaScript ESM", "runtime": "Node.js 26.7.0", "builtins": ["URL", "Headers"], "packages": [], "exports": ["privateOrigin", "allowedRequest"]},
+  "ast": {
+    "purpose": {"meaning": "Admit declared local hosts and one optionally configured private host with compatible browser Origin; no authentication or reachability claim.", "rules": ["C1", "C3", "R2", "R3", "E1"]},
+    "declarations": [
+      {
+        "name": "privateOrigin", "rules": ["C1", "C2", "C3", "E1"],
+        "inputs": [{"name": "value", "type": "string", "default": ""}],
+        "outputs": ["null", "URL"],
+        "operations": [
+          {"order": 1, "rule": "C1", "operation": "If value equals empty string, return null."},
+          {"order": 2, "rule": "C2", "operation": "Construct new URL(value) without base; propagate native parse exception."},
+          {"order": 3, "rule": "C3", "operation": "Require conjunction of all predicates; throw policy Error on failure."},
+          {"order": 4, "rule": "C3", "operation": "Return parsed URL object."}
+        ],
+        "predicates": {"rule": "C3", "all": ["url.protocol === 'https:'", "url.hostname.endsWith('.ts.net')", "url.username === ''", "url.password === ''", "url.pathname === '/'", "url.search === ''", "url.hash === ''", "value === url.origin"]},
+        "errors": [{"rule": "C2", "type": "native URL constructor error", "condition": "parsing fails", "handling": "uncaught propagation"}, {"rule": "C3", "type": "Error", "condition": "any validation predicate fails", "message": "WORKBENCH_ALLOWED_ORIGIN must be one exact HTTPS ts.net origin"}]
+      },
+      {
+        "name": "allowedRequest", "rules": ["R1", "R2", "R3", "E1"],
+        "inputs": [{"name": "headers", "type": "Headers"}, {"name": "configuredOrigin", "type": "string", "default": ""}],
+        "outputs": ["boolean"],
+        "operations": [
+          {"order": 1, "rule": "R1", "operation": "Evaluate privateOrigin(configuredOrigin), propagating error before reading any header."},
+          {"order": 2, "rule": "R2", "operation": "Read headers.get('host') and select exact local mapping first."},
+          {"order": 3, "rule": "R2", "operation": "Otherwise select configured URL origin iff URL exists and Host exactly equals URL host; otherwise return false without reading Origin."},
+          {"order": 4, "rule": "R3", "operation": "Read headers.get('origin'); return true iff null, empty string, or exactly expected origin."}
+        ],
+        "localHosts": {"rule": "R2", "entries": [{"host": "127.0.0.1:4179", "origin": "http://127.0.0.1:4179"}, {"host": "localhost:4179", "origin": "http://localhost:4179"}, {"host": "[::1]:4179", "origin": "http://[::1]:4179"}]},
+        "errors": [{"rule": "R1", "source": "privateOrigin", "handling": "propagate unchanged"}]
+      }
+    ],
+    "constraints": [{"rules": ["R1", "R2"], "meaning": "Only standard Headers.get semantics, exact comparisons, no additional normalization or forwarding headers."}, {"rule": "C3", "meaning": "Use URL port semantics and literal hostname suffix; no DNS, network membership or separate port policy."}, {"rule": "E1", "meaning": "Synchronous; no I/O, environment access, logging, persistent mutation, network, service operations or HTTP responses; only declared input domain."}]
+  },
+  "ontology": {
+    "types": [
+      {"name": "Configuration", "representation": "string", "meaning": "Declared optional private origin spelling, default empty.", "rules": ["C1", "C3"]},
+      {"name": "ParsedPrivateOrigin", "representation": "URL", "meaning": "Parsed canonical exact HTTPS origin satisfying suffix and component predicates; configuration acceptance does not establish network reachability.", "rules": ["C2", "C3"]},
+      {"name": "OptionalPrivateOrigin", "representation": "null | ParsedPrivateOrigin", "meaning": "No private host or validated configured private URL.", "rules": ["C1", "C3"]},
+      {"name": "RequestHeaders", "representation": "Headers", "meaning": "Standard request headers accessed through get.", "rules": ["R1", "R2", "R3"]},
+      {"name": "HostValue", "representation": "string | null", "meaning": "Exact Host get result, not parsed or normalized by this module.", "rules": ["R2"]},
+      {"name": "ExpectedOrigin", "representation": "string", "meaning": "Origin selected from exact local mapping or matching configured URL host.", "rules": ["R2"]},
+      {"name": "OriginValue", "representation": "string | null", "meaning": "Exact Origin get result; empty string and absence are compatible.", "rules": ["R3"]},
+      {"name": "AdmissionDecision", "representation": "boolean", "meaning": "Host and Origin compatibility only; not authentication or authorization.", "rules": ["R2", "R3", "E1"]},
+      {"name": "ConfigurationError", "representation": "native URL error | policy Error", "meaning": "Exceptional configuration failure, never converted to false.", "rules": ["C2", "C3", "R1"]}
+    ]
+  },
+  "composition": {
+    "scope": "Finite typed composition model with exceptional and early-return branches; identity and associativity are obligations, not a proof of categorical semantics.",
+    "objects": ["Configuration", "OptionalPrivateOrigin", "ParsedPair = {value: Configuration, url: URL}", "RequestInput = {headers: Headers, configuredOrigin: Configuration}", "ConfiguredRequest = {headers: Headers, privateURL: OptionalPrivateOrigin}", "HostContext = {headers: Headers, privateURL: OptionalPrivateOrigin, host: string|null}", "Selected = {headers: Headers, expected: ExpectedOrigin}", "Rejected = false", "OriginContext = {expected: ExpectedOrigin, origin: string|null}", "AdmissionDecision", "ConfigurationError"],
+    "arrows": [
+      {"name": "parse", "from": "Configuration", "to": "null | ParsedPair", "throws": "native URL error", "rules": ["C1", "C2"], "operation": "Empty returns null; otherwise construct URL without base and preserve original string."},
+      {"name": "validate", "from": "null | ParsedPair", "to": "OptionalPrivateOrigin", "throws": "policy Error", "rules": ["C1", "C3"], "operation": "Null passes through; pair must satisfy all C3 predicates, then yield URL."},
+      {"name": "configure", "from": "RequestInput", "to": "ConfiguredRequest", "throws": "ConfigurationError", "rules": ["R1"], "operation": "Carry headers without reading them; apply validate after parse to configuredOrigin."},
+      {"name": "readHost", "from": "ConfiguredRequest", "to": "HostContext", "rules": ["R2"], "operation": "Read Host via Headers.get."},
+      {"name": "selectHost", "from": "HostContext", "to": "Selected | Rejected", "rules": ["R2"], "operation": "Exact local mapping first; then exact configured URL host; otherwise false."},
+      {"name": "readOrigin", "from": "Selected", "to": "OriginContext", "rules": ["R3"], "operation": "Read Origin via Headers.get after host selection succeeds."},
+      {"name": "compareOrigin", "from": "OriginContext", "to": "AdmissionDecision", "rules": ["R3"], "operation": "True iff origin is null, empty, or exactly expected."}
+    ],
+    "order": {"privateOrigin": ["parse", "validate"], "allowedRequest": ["configure", "readHost", "selectHost", "on Selected: readOrigin", "on Selected: compareOrigin"], "branchPropagation": "Rejected terminates with false before readOrigin. Configuration exceptions terminate before header reads and propagate unchanged."},
+    "identityObligation": "For each object X, id_X preserves values, object identity and branch/error behavior; composing on either side must preserve declared observable behavior.",
+    "associativityObligation": "For arrows with matching types, lifted composition over success/early-return/error branches must satisfy (h after g) after f equivalent to h after (g after f), preserving left-to-right evaluation, exception propagation and skipped header reads.",
+    "apiEquivalenceClaim": "Generated privateOrigin implements validate after parse. Generated allowedRequest implements configure, readHost, selectHost, and selected-only readOrigin/compareOrigin with the same defaults, return types and exceptions. This is an intended behavioral equivalence on the declared domain, not a universal proof; sampled tests provide evidence.",
+    "rules": ["C1", "C2", "C3", "R1", "R2", "R3", "E1"]
+  },
+  "unresolved": [],
+  "assumptions": [
+    {"kind": "implementation choice with no declared observable effect", "choice": "Use internal sequential if statements for local host mapping and strict equality checks; public exports remain exactly the two requested functions.", "rules": ["R2", "E1"]},
+    {"kind": "scope", "choice": "No behavior is specified or added for values outside string configuration and standard Headers input domains.", "rules": ["C1", "R1", "E1"]}
+  ]
+}

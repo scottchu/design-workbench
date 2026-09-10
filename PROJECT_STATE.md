@@ -1,7 +1,7 @@
 # Project state
 
-Updated: 2026-09-08. Active handoff:
-[Product and source boundaries](docs/iterations/2026-09-08-product-boundaries/HANDOFF.md).
+Updated: 2026-09-10. Read [product intent](docs/product.md),
+[documentation ownership](docs/documentation.md) and [current verification](docs/verification.md).
 This file records the state of Design Workbench software; consumer design/image
 projects retain their own requirements, candidates, decisions and approvals.
 
@@ -33,13 +33,17 @@ Merge/source delivery and Playground runtime refresh are complete. Five-skill
 installation and fresh-session installed-skill acceptance remain pending and were
 explicitly excluded from this refresh. Do not perform them as incidental setup.
 
-The user approved documenting the product and its intent-source, implementation,
-deliverable and runtime boundaries after comparing Agentic Compiler's direction.
-[Product intent](docs/product.md) now owns why/how/what; [architecture](docs/architecture.md)
-owns the separation, and README provides navigation. This is documentation work;
-it does not introduce a compiler, reorganize folders or relocate the runtime.
-The next bounded step is review and integration of this documentation PR before
-selecting further implementation work. No new roadmap milestone has started.
+Product/source boundaries and the bounded reconstruction are documented in their
+current owners. The reconstruction has sampled compatibility evidence for one
+module; it does not establish a general compiler or full-product reproduction.
+Temporary PR6/PR7 iteration notes have been consolidated. Exact technical evidence
+is retained outside docs, linked from current verification.
+
+The separate `CAD-workbench-next` worktree contains uncommitted authoring/model
+proposals from another task. They are not included in this delivery and must not
+be deleted or treated as adopted source. Resolve those proposals before selecting
+another reconstruction experiment. Installed-skill acceptance remains separately
+pending; no runtime refresh or new compiler implementation is part of closeout.
 
 The [roadmap](docs/roadmap.md) retains R1 installed-skill acceptance, then a bounded
 R2 read-only MCP contract. Workbench MCP and consistent-image production are still

@@ -65,3 +65,20 @@ The current package includes skill and Playground sources; installation does not
 automatically prepare, build or start the runtime. The exact mechanism for a more
 self-contained runtime release remains open. See [packaging](../packaging/README.md)
 for what is actually assembled and [the roadmap](roadmap.md) for pending work.
+
+## Source sufficiency target
+
+Versioned document source and explicit target parameters should be sufficient
+to reconstruct the declared
+product outputs. Consequential behavior must not exist only in implementation,
+tests or remembered conversations. Required dependencies and external inputs must
+be declared; private runtime state is not something product documents can invent.
+
+Interpretation may produce an AST, ontology and typed composition graph before
+generation. These are derived views that must preserve source meaning and expose
+gaps; their presence alone does not establish a compiler or fill in missing
+requirements. [Current verification](verification.md) supports sampled behavior compatibility
+for one reconstructed module. Reproducible, byte-identical full
+product compilation remains an unimplemented target, with generation and
+verification mechanisms still to be established. Existing code remains maintained
+source until replacement is supported by explicit evidence.

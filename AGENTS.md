@@ -1,6 +1,6 @@
 # Working on CAD Workbench
 
-Read the README, relevant decision records and active iteration brief before material changes. Use repository state and evidence records as the handoff authority; do not infer implementation status from a roadmap.
+Read the README, relevant decision records and current specifications before material changes; read an active brief when one exists. Use repository state and evidence records as the handoff authority; do not infer implementation status from a roadmap.
 
 ## Scope
 
@@ -23,6 +23,6 @@ Read the README, relevant decision records and active iteration brief before mat
 - Run focused local checks that catch credible failures, including actual artifact readback for export changes. Do not substitute mocked process success or a screenshot for geometry evidence.
 - Record exact commands, results, source/artifact identities and limitations. Distinguish CAD checks, written-artifact/slicer evidence and physical acceptance.
 - Use delegation when it resolves a concrete scope or independence need. Keep one writer per namespace and bounded task ownership. Separate implementation from acceptance review for substantial changes; do not require a large role ceremony for routine software edits.
-- Keep active iteration/handoff records current for material changes. Report blockers without presenting planned checks as completed.
+- Keep current specifications and delivery state accurate. Follow docs/documentation.md when closing work: integrate adopted conclusions into their owning documents, preserve necessary evidence outside docs, remove temporary iteration notes and use Git/PRs for change history. Report blockers without presenting planned checks as completed.
 - Develop intended trunk changes on a non-main branch and deliver through a pull request unless the user explicitly overrides that route. The initial local foundation does not authorize remote creation or push.
 - No repository-hosted CI. Required validation runs locally; absence of CI does not waive it.
