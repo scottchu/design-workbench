@@ -1,7 +1,7 @@
 # Project state
 
 Updated: 2026-09-08. Active handoff:
-[PR4 merge and Playground refresh](docs/iterations/2026-09-08-playground-refresh/HANDOFF.md).
+[Product and source boundaries](docs/iterations/2026-09-08-product-boundaries/HANDOFF.md).
 This file records the state of Design Workbench software; consumer design/image
 projects retain their own requirements, candidates, decisions and approvals.
 
@@ -33,10 +33,13 @@ Merge/source delivery and Playground runtime refresh are complete. Five-skill
 installation and fresh-session installed-skill acceptance remain pending and were
 explicitly excluded from this refresh. Do not perform them as incidental setup.
 
-The user's active discussion is understanding repository structure, including
-catalog/contracts/templates/tools and the roles of PROJECT_STATE and NEXT_AGENT.
-Finish that explanation before starting another roadmap milestone. Proposed
-structural simplifications are not authorization to move folders or project data.
+The user approved documenting the product and its intent-source, implementation,
+deliverable and runtime boundaries after comparing Agentic Compiler's direction.
+[Product intent](docs/product.md) now owns why/how/what; [architecture](docs/architecture.md)
+owns the separation, and README provides navigation. This is documentation work;
+it does not introduce a compiler, reorganize folders or relocate the runtime.
+The next bounded step is review and integration of this documentation PR before
+selecting further implementation work. No new roadmap milestone has started.
 
 The [roadmap](docs/roadmap.md) retains R1 installed-skill acceptance, then a bounded
 R2 read-only MCP contract. Workbench MCP and consistent-image production are still
@@ -50,7 +53,8 @@ Source acceptance: 32 Python tests, 11 frontend tests, zero-error/warning Svelte
 check, real playground build and package readback; see
 [source validation](docs/iterations/2026-09-08-playground-name/VALIDATION.md) and
 [independent review](docs/iterations/2026-09-08-playground-name/REVIEW.md).
-Current live results and exact identities are in the active handoff. Earlier phone
+Current live results and exact identities are in the
+[runtime refresh handoff](docs/iterations/2026-09-08-playground-refresh/HANDOFF.md). Earlier phone
 access is user-confirmed historical evidence, not a new phone test this refresh.
 
 The merged ownership extraction and consumer preservation are recorded in

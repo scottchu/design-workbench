@@ -5,6 +5,9 @@ Read [AGENTS.md](AGENTS.md), [README.md](README.md),
 repository evidence; do not reconstruct old chat or repeat completed migration
 checks without a concrete discrepancy. Communicate in Chinese.
 
+For product questions, read [product intent](docs/product.md) and the linked
+architecture boundaries. Status and handoff records do not redefine that intent.
+
 The GitHub repository is `scottchu/design-workbench`. Local folder names remain
 unchanged by explicit user instruction. Check Git state before new work; develop
 on a non-main branch and deliver through a PR.

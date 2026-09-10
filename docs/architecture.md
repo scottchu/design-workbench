@@ -1,5 +1,40 @@
 # Architecture and ownership
 
+## Intent source, implementation, delivery and runtime
+
+The [product definition](product.md) owns why Design Workbench exists, how it
+helps and what it delivers. Versioned product documents govern intended behavior;
+implementation and observations must be assessed against that intent.
+
+| Layer | Authority and current home |
+| --- | --- |
+| Product intent source | `docs/product.md`, architectural constraints, shared contracts and adopted decisions define required behavior and boundaries. Proposals retain their explicit status. |
+| Implementation source | `skills/`, `workflows/`, `apps/playground/` and executable tools realize the product. Skill and workflow Markdown is maintained product implementation, even though it is text. Shared rules remain in their owning contracts rather than being copied here. |
+| Build and verification source | Packaging code, tests, generic fixtures and build scripts assemble and check declared deliverables. Passing checks supply evidence; they do not redefine intent. |
+| Product deliverables | Versioned plugin packages and supporting software builds are outputs. Current packaging assembles sources and receipts; it does not provide an already prepared runtime. |
+| Runtime instance | An installed environment, built app, running process, local binding, registry and logs describe a particular deployment. These are separate from the source and release identities. |
+| Records and navigation | Iteration records preserve observed evidence. `PROJECT_STATE.md` summarizes current delivery and pending work; `NEXT_AGENT.md` routes a successor to the owners. Neither creates new product requirements. |
+
+These are responsibility boundaries, not a requirement for six new folders or
+repositories. Current runtime build and environment files remain ignored in the
+bound canonical checkout. A source update, package build, plugin installation and
+runtime refresh are distinct actions; none silently performs the others. This
+documentation change does not relocate the live runtime or select a new release
+layout.
+
+Agentic Compiler's documents-as-source direction informs this separation. For
+Workbench, consequential product choices belong in versioned intent documents or
+explicit configuration, rather than chat memory. Existing implementation code
+remains maintained source: no docs-to-code compiler or complete reproducible
+docs-to-product pipeline has been demonstrated. Adopting intent authority is not
+a claim that implementation can already be discarded and regenerated.
+
+Document format does not determine authority. Product requirements, proposed
+architecture, agent instructions and observed results can all be Markdown while
+having different roles. Give each rule one owner, link to it from other views,
+and expose conflicts between intent and observed behavior instead of silently
+treating either as the other.
+
 ## Planned evolution: purpose, composition and owned execution
 
 The [roadmap](roadmap.md) records the user's subsequent direction. Document each
@@ -31,12 +66,12 @@ acceptance remain separate from this extraction.
 
 ## Product boundary
 
-CAD Workbench owns the workflow plugin and a dedicated local SvelteKit simulator host. It connects project-owned intent, geometry and evidence through explicit provider bindings. The separate printer/slicer project retains its MCP, API, dashboard and widgets; Workbench coordinates those capabilities through skills without absorbing their services. This user decision supersedes the earlier broad application-backend proposal.
+Design Workbench owns the design workflow plugin and a dedicated local SvelteKit Playground host. It connects project-owned intent, design sources and evidence through explicit provider bindings. The separate printer/slicer project retains its MCP, API, dashboard and widgets; Workbench coordinates those capabilities through skills without absorbing their services. This user decision supersedes the earlier broad application-backend proposal.
 
 | Owner | Responsibility |
 | --- | --- |
-| External design repositories, including design-projects | Authoritative CAD source, design parameters, requirements, design decisions, project checks, release artifacts and physical observations. |
-| CAD Workbench | Workflow plugin, catalog/recipes, shared policies/templates/skills, local simulator host, generic software fixtures and integration checks. |
+| External design/image repositories | Authoritative design sources, parameters, references, requirements, design decisions, project checks, release artifacts, approvals and physical observations where applicable. |
+| Design Workbench | Design-work plugin, catalog/recipes, shared policies/templates/skills, Playground host, generic software fixtures and integration checks. |
 | Pinned text-to-CAD/cadgen runtime | Existing supported generation, inspection, export and snapshot capabilities. |
 | Separate Orca preparation and printer-operation project | Slicer/printer runtime, API, MCP, dashboard and widgets. Connected through identified artifacts and actually available interfaces. Existing architecture documentation does not establish that every planned capability is available. |
 
