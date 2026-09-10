@@ -68,8 +68,8 @@ for what is actually assembled and [the roadmap](roadmap.md) for pending work.
 
 ## Source sufficiency target
 
-The user subsequently adopted a stronger target: versioned document source and
-explicit target parameters should be sufficient to reconstruct the declared
+Versioned document source and explicit target parameters should be sufficient
+to reconstruct the declared
 product outputs. Consequential behavior must not exist only in implementation,
 tests or remembered conversations. Required dependencies and external inputs must
 be declared; private runtime state is not something product documents can invent.
@@ -77,8 +77,8 @@ be declared; private runtime state is not something product documents can invent
 Interpretation may produce an AST, ontology and typed composition graph before
 generation. These are derived views that must preserve source meaning and expose
 gaps; their presence alone does not establish a compiler or fill in missing
-requirements. The first [bounded reconstruction experiment](iterations/2026-09-08-docs-reconstruction/BRIEF.md)
-tests behavior compatibility for one module. Reproducible, byte-identical full
+requirements. [Current verification](verification.md) supports sampled behavior compatibility
+for one reconstructed module. Reproducible, byte-identical full
 product compilation remains an unimplemented target, with generation and
 verification mechanisms still to be established. Existing code remains maintained
 source until replacement is supported by explicit evidence.

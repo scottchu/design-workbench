@@ -24,7 +24,7 @@ The [current state](PROJECT_STATE.md) records what is delivered and verified;
 | Where is the software implemented and checked? | `apps/playground/`, executable `scripts/`, software `tests/` and generic `fixtures/`. `tools/` currently preserves [legacy Viewer maintenance source](tools/LEGACY_VIEWER.md). |
 | What gets shipped? | [Packaging](packaging/README.md): explicit package inputs, outputs and receipts. |
 | What is running or accepted now? | [PROJECT_STATE](PROJECT_STATE.md) and its evidence links. [NEXT_AGENT](NEXT_AGENT.md) is a startup pointer. |
-| How should an agent work on this repository? | [AGENTS](AGENTS.md). |
+| How should an agent work on this repository? | [AGENTS](AGENTS.md) and [documentation ownership](docs/documentation.md). |
 
 The current source package contains five skills and Playground source. It does
 not automatically prepare or start a runtime, and no owned Workbench MCP is

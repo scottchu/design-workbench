@@ -10,7 +10,7 @@ not maintained production modules or additional policy authorities.
 
 The builder received only the specification and procedural/output instructions,
 not existing code or acceptance tests. Read the
-[experiment evidence](../../../docs/iterations/2026-09-08-docs-reconstruction/HANDOFF.md)
+[experiment evidence](../../../docs/verification.md)
 and its receipt for identities and limits. Do not patch these outputs to change
 policy: revise the owning source and conduct a new identified generation.
 

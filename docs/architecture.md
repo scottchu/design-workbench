@@ -13,7 +13,7 @@ implementation and observations must be assessed against that intent.
 | Build and verification source | Packaging code, tests, generic fixtures and build scripts assemble and check declared deliverables. Passing checks supply evidence; they do not redefine intent. |
 | Product deliverables | Versioned plugin packages and supporting software builds are outputs. Current packaging assembles sources and receipts; it does not provide an already prepared runtime. |
 | Runtime instance | An installed environment, built app, running process, local binding, registry and logs describe a particular deployment. These are separate from the source and release identities. |
-| Records and navigation | Iteration records preserve observed evidence. `PROJECT_STATE.md` summarizes current delivery and pending work; `NEXT_AGENT.md` routes a successor to the owners. Neither creates new product requirements. |
+| Records and navigation | Current verification summarizes findings and links separately retained evidence; historical iteration records remain where still consumed. `PROJECT_STATE.md` summarizes current delivery and pending work; `NEXT_AGENT.md` routes a successor to the owners. Neither creates new product requirements. |
 
 These are responsibility boundaries, not a requirement for six new folders or
 repositories. Current runtime build and environment files remain ignored in the
@@ -29,16 +29,15 @@ remains maintained source: no docs-to-code compiler or complete reproducible
 docs-to-product pipeline has been demonstrated. Adopting intent authority is not
 a claim that implementation can already be discarded and regenerated.
 
-The subsequent [source sufficiency target](product.md#source-sufficiency-target)
-requires capturing enough behavior in document source to reconstruct declared
-outputs. The [first experiment](iterations/2026-09-08-docs-reconstruction/BRIEF.md)
-captures current request-admission behavior in one specification, freezes it,
-derives AST/ontology/composition views in a fresh agent context and compares the
-generated module with independent expectations and the existing implementation.
-This is manual interpretation with sampled behavioral evidence. It does not
-implement a general parser, prove category laws, or establish byte-identical
-generation. Generated models and code are designated experimental fixtures;
-production continues to use its existing implementation.
+The [source sufficiency target](product.md#source-sufficiency-target) requires
+capturing enough behavior in document source to reconstruct declared outputs.
+[Current verification](verification.md) records the demonstrated scope and gaps.
+Generated models and code remain designated experimental fixtures; production
+continues to use its existing implementation.
+
+[Documentation ownership](documentation.md) defines current source, replaceable
+technical decisions, evidence and iteration closeout. Git retains revision history;
+reconstruction uses the effective source and explicit target inputs at a revision.
 
 Document format does not determine authority. Product requirements, proposed
 architecture, agent instructions and observed results can all be Markdown while
